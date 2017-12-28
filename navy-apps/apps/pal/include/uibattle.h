@@ -31,30 +31,30 @@ extern "C"
 
 typedef enum tagBATTLEUISTATE
 {
-   kBattleUIWait,
-   kBattleUISelectMove,
-   kBattleUISelectTargetEnemy,
-   kBattleUISelectTargetPlayer,
-   kBattleUISelectTargetEnemyAll,
-   kBattleUISelectTargetPlayerAll,
+    kBattleUIWait,
+    kBattleUISelectMove,
+    kBattleUISelectTargetEnemy,
+    kBattleUISelectTargetPlayer,
+    kBattleUISelectTargetEnemyAll,
+    kBattleUISelectTargetPlayerAll,
 } BATTLEUISTATE;
 
 typedef enum tagBATTLEMENUSTATE
 {
-   kBattleMenuMain,
-   kBattleMenuMagicSelect,
-   kBattleMenuUseItemSelect,
-   kBattleMenuThrowItemSelect,
-   kBattleMenuMisc,
-   kBattleMenuMiscItemSubMenu,
+    kBattleMenuMain,
+    kBattleMenuMagicSelect,
+    kBattleMenuUseItemSelect,
+    kBattleMenuThrowItemSelect,
+    kBattleMenuMisc,
+    kBattleMenuMiscItemSubMenu,
 } BATTLEMENUSTATE;
 
 typedef enum tagBATTLEUIACTION
 {
-   kBattleUIActionAttack,
-   kBattleUIActionMagic,
-   kBattleUIActionCoopMagic,
-   kBattleUIActionMisc,
+    kBattleUIActionAttack,
+    kBattleUIActionMagic,
+    kBattleUIActionCoopMagic,
+    kBattleUIActionMisc,
 } BATTLEUIACTION;
 
 #define SPRITENUM_BATTLEICON_ATTACK      40
@@ -86,65 +86,65 @@ typedef enum tagBATTLEUIACTION
 
 typedef struct tagSHOWNUM
 {
-   WORD             wNum;
-   PAL_POS          pos;
-   DWORD            dwTime;
-   NUMCOLOR         color;
+    WORD             wNum;
+    PAL_POS          pos;
+    DWORD            dwTime;
+    NUMCOLOR         color;
 } SHOWNUM;
 
 typedef struct tagBATTLEUI
 {
-   BATTLEUISTATE    state;
-   BATTLEMENUSTATE  MenuState;
+    BATTLEUISTATE    state;
+    BATTLEMENUSTATE  MenuState;
 
-   CHAR             szMsg[256];           // message to be shown on the screen
-   CHAR             szNextMsg[256];       // next message to be shown on the screen
-   DWORD            dwMsgShowTime;        // the end time of showing the message
-   WORD             wNextMsgDuration;     // duration of the next message
+    CHAR             szMsg[256];           // message to be shown on the screen
+    CHAR             szNextMsg[256];       // next message to be shown on the screen
+    DWORD            dwMsgShowTime;        // the end time of showing the message
+    WORD             wNextMsgDuration;     // duration of the next message
 
-   WORD             wCurPlayerIndex;      // index of the current player
-   WORD             wSelectedAction;      // current selected action
-   WORD             wSelectedIndex;       // current selected index of player or enemy
-   WORD             wPrevEnemyTarget;     // previous enemy target
+    WORD             wCurPlayerIndex;      // index of the current player
+    WORD             wSelectedAction;      // current selected action
+    WORD             wSelectedIndex;       // current selected index of player or enemy
+    WORD             wPrevEnemyTarget;     // previous enemy target
 
-   WORD             wActionType;          // type of action to be performed
-   WORD             wObjectID;            // object ID of the item or magic to use
+    WORD             wActionType;          // type of action to be performed
+    WORD             wObjectID;            // object ID of the item or magic to use
 
-   BOOL             fAutoAttack;          // TRUE if auto attack
+    BOOL             fAutoAttack;          // TRUE if auto attack
 
-   SHOWNUM          rgShowNum[BATTLEUI_MAX_SHOWNUM];
+    SHOWNUM          rgShowNum[BATTLEUI_MAX_SHOWNUM];
 } BATTLEUI;
 
 VOID
 PAL_PlayerInfoBox(
-   PAL_POS         pos,
-   WORD            wPlayerRole,
-   INT             iTimeMeter,
-   BYTE            bTimeMeterColor,
-   BOOL            fUpdate
+    PAL_POS         pos,
+    WORD            wPlayerRole,
+    INT             iTimeMeter,
+    BYTE            bTimeMeterColor,
+    BOOL            fUpdate
 );
 
 VOID
 PAL_BattleUIShowText(
-   LPCSTR        lpszText,
-   WORD          wDuration
+    LPCSTR        lpszText,
+    WORD          wDuration
 );
 
 VOID
 PAL_BattleUIPlayerReady(
-   WORD          wPlayerIndex
+    WORD          wPlayerIndex
 );
 
 VOID
 PAL_BattleUIUpdate(
-   VOID
+    VOID
 );
 
 VOID
 PAL_BattleUIShowNum(
-   WORD           wNum,
-   PAL_POS        pos,
-   NUMCOLOR       color
+    WORD           wNum,
+    PAL_POS        pos,
+    NUMCOLOR       color
 );
 
 #ifdef __cplusplus

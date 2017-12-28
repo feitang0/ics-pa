@@ -38,36 +38,36 @@ QUICKREF
 
 char *
 _DEFUN (strstr, (searchee, lookfor),
-	_CONST char *searchee _AND
-	_CONST char *lookfor)
+        _CONST char *searchee _AND
+        _CONST char *lookfor)
 {
-  if (*searchee == 0)
+    if (*searchee == 0)
     {
-      if (*lookfor)
-	return (char *) NULL;
-      return (char *) searchee;
+        if (*lookfor)
+            return (char *) NULL;
+        return (char *) searchee;
     }
 
-  while (*searchee)
+    while (*searchee)
     {
-      size_t i;
-      i = 0;
+        size_t i;
+        i = 0;
 
-      while (1)
-	{
-	  if (lookfor[i] == 0)
-	    {
-	      return (char *) searchee;
-	    }
+        while (1)
+        {
+            if (lookfor[i] == 0)
+            {
+                return (char *) searchee;
+            }
 
-	  if (lookfor[i] != searchee[i])
-	    {
-	      break;
-	    }
-	  i++;
-	}
-      searchee++;
+            if (lookfor[i] != searchee[i])
+            {
+                break;
+            }
+            i++;
+        }
+        searchee++;
     }
 
-  return (char *) NULL;
+    return (char *) NULL;
 }

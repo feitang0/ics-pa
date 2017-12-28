@@ -6,7 +6,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -45,7 +45,7 @@ PORTABILITY
 	<<sqrt>> is ANSI C.  <<sqrtf>> is an extension.
 */
 
-/* 
+/*
  * wrapper sqrt(x)
  */
 
@@ -58,26 +58,26 @@ PORTABILITY
 #if defined (_LIBM_REENT) || ! defined (_REENT_ONLY)
 
 #ifdef __STDC__
-	double sqrt(_R1 double x)		/* wrapper sqrt */
+double sqrt(_R1 double x)		/* wrapper sqrt */
 #else
-	double sqrt(_R2 x)			/* wrapper sqrt */
-	_R3 double x;
+double sqrt(_R2 x)			/* wrapper sqrt */
+_R3 double x;
 #endif
 {
 #ifndef _DOUBLE_IS_32BITS
 #ifdef _IEEE_LIBM
-	return __ieee754_sqrt(x);
+    return __ieee754_sqrt(x);
 #else
-	double z;
-	z = __ieee754_sqrt(x);
-	if(_LIB_VERSION == _IEEE_ || isnan(x)) return z;
-	if(x<0.0) {
-	    return __kernel_standard(_R4,x,x,26); /* sqrt(negative) */
-	} else
-	    return z;
+    double z;
+    z = __ieee754_sqrt(x);
+    if(_LIB_VERSION == _IEEE_ || isnan(x)) return z;
+    if(x<0.0) {
+        return __kernel_standard(_R4,x,x,26); /* sqrt(negative) */
+    } else
+        return z;
 #endif
 #else /* defined (_DOUBLE_IS_32BITS) */
-	return (double) _sqrtf_r (_R4, (float) x);
+    return (double) _sqrtf_r (_R4, (float) x);
 #endif /* defined (_DOUBLE_IS_32BITS) */
 }
 

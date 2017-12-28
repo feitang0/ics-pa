@@ -47,13 +47,13 @@ No supporting OS subroutines are required.
 
 int
 _DEFUN (atoi, (s),
-	_CONST char *s)
+        _CONST char *s)
 {
-  return (int) strtol (s, NULL, 10);
+    return (int) strtol (s, NULL, 10);
 }
 long
 _DEFUN (atol, (s),
-	_CONST char *s)
+        _CONST char *s)
 {
-  return strtol (s, NULL, 10);
+    return strtol (s, NULL, 10);
 }

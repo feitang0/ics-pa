@@ -47,7 +47,7 @@ NAME##_t NAME##_next(NAME##_t node); \
 void NAME##_remove(NAME##_t node); \
 void NAME##_insert(NAME##_t prev, NAME##_t next, NAME##_t obj); \
 NAME##_t NAME##_new(); \
-void NAME##_free(NAME##_t node); 
+void NAME##_free(NAME##_t node);
 
 /* list implementation */
 #define LINKLIST_IMPL(NAME, SIZE) \
@@ -92,10 +92,10 @@ void NAME##_free(NAME##_t node) { \
 
 /* 定义fly_t链表 */
 LINKLIST_DEF(fly)
-	int x;
-	int y;
-	int text;
-	int v;
+int x;
+int y;
+int text;
+int v;
 LINKLIST_DEF_FI(fly)
 
 typedef char bool;

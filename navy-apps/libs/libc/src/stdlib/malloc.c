@@ -38,7 +38,7 @@ ANSI_SYNOPSIS
 	void free(void *<[aptr]>);
 
 	void *_malloc_r(void *<[reent]>, size_t <[nbytes]>);
-	void *_realloc_r(void *<[reent]>, 
+	void *_realloc_r(void *<[reent]>,
                          void *<[aptr]>, size_t <[nbytes]>);
 	void _free_r(void *<[reent]>, void *<[aptr]>);
 
@@ -128,24 +128,24 @@ Supporting OS subroutines required: <<sbrk>>, <<write>> (if WARN_VLIMIT).
 
 _PTR
 _DEFUN (malloc, (nbytes),
-	size_t nbytes)		/* get a block */
+        size_t nbytes)		/* get a block */
 {
-  return _malloc_r (_REENT, nbytes);
+    return _malloc_r (_REENT, nbytes);
 }
 
 void
 _DEFUN (free, (aptr),
-	_PTR aptr)
+        _PTR aptr)
 {
-  _free_r (_REENT, aptr);
+    _free_r (_REENT, aptr);
 }
 
 _PTR
 _DEFUN (realloc, (ap, nbytes),
-	_PTR ap _AND
-	size_t nbytes)
+        _PTR ap _AND
+        size_t nbytes)
 {
-  return _realloc_r (_REENT, ap, nbytes);
+    return _realloc_r (_REENT, ap, nbytes);
 }
 
 #endif

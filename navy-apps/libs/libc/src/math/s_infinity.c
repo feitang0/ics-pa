@@ -35,14 +35,14 @@ QUICKREF
 
 #include "fdlibm.h"
 
-	double infinity()
+double infinity()
 {
 #ifndef _DOUBLE_IS_32BITS
-	double x;
+    double x;
 
-	INSERT_WORDS(x,0x7ff00000,0);
-	return x;
+    INSERT_WORDS(x,0x7ff00000,0);
+    return x;
 #else /* defined (_DOUBLE_IS_32BITS) */
-	return (double) infinityf ();
+    return (double) infinityf ();
 #endif /* defined (_DOUBLE_IS_32BITS) */
 }

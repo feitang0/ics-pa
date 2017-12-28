@@ -62,19 +62,19 @@ int _dummy_raise;
 
 int
 _DEFUN (raise, (sig),
-	int sig)
+        int sig)
 {
-  return _raise_r (_REENT, sig);
+    return _raise_r (_REENT, sig);
 }
 
 #endif
 
 int
 _DEFUN (_raise_r, (reent, sig),
-	struct _reent *reent _AND
-	int sig)
+        struct _reent *reent _AND
+        int sig)
 {
-  return _kill_r (reent, _getpid_r (reent), sig);
+    return _kill_r (reent, _getpid_r (reent), sig);
 }
 
 #endif /* ! SIMULATED_SIGNALS */

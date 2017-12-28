@@ -24,79 +24,79 @@
 
 typedef enum tagDIALOGPOSITION
 {
-   kDialogUpper       = 0,
-   kDialogCenter,
-   kDialogLower,
-   kDialogCenterWindow
+    kDialogUpper       = 0,
+    kDialogCenter,
+    kDialogLower,
+    kDialogCenterWindow
 } DIALOGLOCATION;
 
 #define PAL_ADDITIONAL_WORD_FIRST           10000
 
 INT
 PAL_InitText(
-   VOID
+    VOID
 );
 
 VOID
 PAL_FreeText(
-   VOID
+    VOID
 );
 
 LPCSTR
 PAL_GetWord(
-   WORD       wNumWord
+    WORD       wNumWord
 );
 
 LPCSTR
 PAL_GetMsg(
-   WORD       wNumMsg
+    WORD       wNumMsg
 );
 
 VOID
 PAL_DrawText(
-   LPCSTR     lpszText,
-   PAL_POS    pos,
-   BYTE       bColor,
-   BOOL       fShadow,
-   BOOL       fUpdate
+    LPCSTR     lpszText,
+    PAL_POS    pos,
+    BYTE       bColor,
+    BOOL       fShadow,
+    BOOL       fUpdate
 );
 
 VOID
 PAL_DialogSetDelayTime(
-   INT          iDelayTime
+    INT          iDelayTime
 );
 
 VOID
 PAL_StartDialog(
-   BYTE         bDialogLocation,
-   BYTE         bFontColor,
-   INT          iNumCharFace,
-   BOOL         fPlayingRNG
+    BYTE         bDialogLocation,
+    BYTE         bFontColor,
+    INT          iNumCharFace,
+    BOOL         fPlayingRNG
 );
 
 VOID
 PAL_ShowDialogText(
-   LPCSTR       szText
+    LPCSTR       szText
 );
 
 VOID
 PAL_ClearDialog(
-   BOOL         fWaitForKey
+    BOOL         fWaitForKey
 );
 
 VOID
 PAL_EndDialog(
-   VOID
+    VOID
 );
 
 BOOL
 PAL_IsInDialog(
-   VOID
+    VOID
 );
 
 BOOL
 PAL_DialogIsPlayingRNG(
-   VOID
+    VOID
 );
 
 #endif

@@ -46,12 +46,12 @@ _DEFUN (mbtowc, (pwc, s, n),
         const char *s _AND
         size_t n)
 {
-        if (s == NULL)
-                return 0;
-        if (n == 0)
-                return -1;
-        if (pwc)
-                *pwc = (wchar_t) *s;
-        return (*s != '\0');
+    if (s == NULL)
+        return 0;
+    if (n == 0)
+        return -1;
+    if (pwc)
+        *pwc = (wchar_t) *s;
+    return (*s != '\0');
 }
 

@@ -26,7 +26,7 @@ int errno;
 /*
 FUNCTION
 	<<_kill_r>>---Reentrant version of kill
-	
+
 INDEX
 	_kill_r
 
@@ -49,23 +49,23 @@ DESCRIPTION
 
 int
 _kill_r (ptr, pid, sig)
-     struct _reent *ptr;
-     int pid;
-     int sig;
+struct _reent *ptr;
+int pid;
+int sig;
 {
-  int ret;
+    int ret;
 
-  errno = 0;
-  ret = _kill (pid, sig);
-  if (errno != 0)
-    ptr->_errno = errno;
-  return ret;
+    errno = 0;
+    ret = _kill (pid, sig);
+    if (errno != 0)
+        ptr->_errno = errno;
+    return ret;
 }
 
 /*
 FUNCTION
 	<<_getpid_r>>---Reentrant version of getpid
-	
+
 INDEX
 	_getpid_r
 
@@ -89,11 +89,11 @@ DESCRIPTION
 
 int
 _getpid_r (ptr)
-     struct _reent *ptr;
+struct _reent *ptr;
 {
-  int ret;
-  ret = _getpid ();
-  return ret;
+    int ret;
+    ret = _getpid ();
+    return ret;
 }
 
 #endif /* ! defined (REENTRANT_SYSCALLS_PROVIDED) */

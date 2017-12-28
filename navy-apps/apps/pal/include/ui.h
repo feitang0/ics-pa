@@ -125,24 +125,24 @@ extern "C"
 
 typedef struct tagBOX
 {
-   PAL_POS        pos;
-   WORD           wWidth, wHeight;
-   SDL_Surface   *lpSavedArea;
+    PAL_POS        pos;
+    WORD           wWidth, wHeight;
+    SDL_Surface   *lpSavedArea;
 } BOX, *LPBOX;
 
 typedef struct tagMENUITEM
 {
-   WORD          wValue;
-   WORD          wNumWord;
-   BOOL          fEnabled;
-   PAL_POS       pos;
+    WORD          wValue;
+    WORD          wNumWord;
+    BOOL          fEnabled;
+    PAL_POS       pos;
 } MENUITEM, *LPMENUITEM;
 
 typedef struct tagOBJECTDESC
 {
-   WORD                        wObjectID;
-   LPSTR                       lpDesc;
-   struct tagOBJECTDESC       *next;
+    WORD                        wObjectID;
+    LPSTR                       lpDesc;
+    struct tagOBJECTDESC       *next;
 } OBJECTDESC, *LPOBJECTDESC;
 
 typedef VOID (*LPITEMCHANGED_CALLBACK)(WORD);
@@ -151,81 +151,81 @@ typedef VOID (*LPITEMCHANGED_CALLBACK)(WORD);
 
 typedef enum tagNUMCOLOR
 {
-   kNumColorYellow,
-   kNumColorBlue,
-   kNumColorCyan
+    kNumColorYellow,
+    kNumColorBlue,
+    kNumColorCyan
 } NUMCOLOR;
 
 typedef enum tagNUMALIGN
 {
-   kNumAlignLeft,
-   kNumAlignMid,
-   kNumAlignRight
+    kNumAlignLeft,
+    kNumAlignMid,
+    kNumAlignRight
 } NUMALIGN;
 
 INT
 PAL_InitUI(
-   VOID
+    VOID
 );
 
 VOID
 PAL_FreeUI(
-   VOID
+    VOID
 );
 
 LPBOX
 PAL_CreateBox(
-   PAL_POS        pos,
-   INT            nRows,
-   INT            nColumns,
-   INT            iStyle,
-   BOOL           fSaveScreen
+    PAL_POS        pos,
+    INT            nRows,
+    INT            nColumns,
+    INT            iStyle,
+    BOOL           fSaveScreen
 );
 
 LPBOX
 PAL_CreateSingleLineBox(
-   PAL_POS        pos,
-   INT            nLen,
-   BOOL           fSaveScreen
+    PAL_POS        pos,
+    INT            nLen,
+    BOOL           fSaveScreen
 );
 
 VOID
 PAL_DeleteBox(
-   LPBOX          lpBox
+    LPBOX          lpBox
 );
 
 WORD
 PAL_ReadMenu(
-   LPITEMCHANGED_CALLBACK    lpfnMenuItemChanged,
-   LPMENUITEM                rgMenuItem,
-   INT                       nMenuItem,
-   WORD                      wDefaultItem,
-   BYTE                      bLabelColor
+    LPITEMCHANGED_CALLBACK    lpfnMenuItemChanged,
+    LPMENUITEM                rgMenuItem,
+    INT                       nMenuItem,
+    WORD                      wDefaultItem,
+    BYTE                      bLabelColor
 );
 
 VOID
 PAL_DrawNumber(
-   UINT            iNum,
-   UINT            nLength,
-   PAL_POS         pos,
-   NUMCOLOR        color,
-   NUMALIGN        align
+    UINT            iNum,
+    UINT            nLength,
+    PAL_POS         pos,
+    NUMCOLOR        color,
+    NUMALIGN        align
 );
 
 LPOBJECTDESC
 PAL_LoadObjectDesc(
-   LPCSTR          lpszFileName
+    LPCSTR          lpszFileName
 );
 
 VOID
 PAL_FreeObjectDesc(
-   LPOBJECTDESC    lpObjectDesc
+    LPOBJECTDESC    lpObjectDesc
 );
 
 LPCSTR
 PAL_GetObjectDesc(
-   LPOBJECTDESC   lpObjectDesc,
-   WORD           wObjectID
+    LPOBJECTDESC   lpObjectDesc,
+    WORD           wObjectID
 );
 
 extern LPSPRITE gpSpriteUI;

@@ -39,8 +39,8 @@ PSP_HEAP_SIZE_KB(PSP_HEAP_MEMSIZE);
 //
 int PSPExitCallback(int arg1, int arg2, void *common)
 {
-	exit(0);
-	return 0;
+    exit(0);
+    return 0;
 }
 
 //
@@ -48,27 +48,27 @@ int PSPExitCallback(int arg1, int arg2, void *common)
 //
 int PSPSuspendCallback(int arg1, int pwrflags, void *common)
 {
-  if (pwrflags & PSP_POWER_CB_RESUME_COMPLETE)
-  {
-    UTIL_CloseFile(gpGlobals->f.fpFBP);
-    UTIL_CloseFile(gpGlobals->f.fpMGO);
-    UTIL_CloseFile(gpGlobals->f.fpBALL);
-    UTIL_CloseFile(gpGlobals->f.fpDATA);
-    UTIL_CloseFile(gpGlobals->f.fpF);
-    UTIL_CloseFile(gpGlobals->f.fpFIRE);
-    UTIL_CloseFile(gpGlobals->f.fpRGM);
-    UTIL_CloseFile(gpGlobals->f.fpSSS);
-    gpGlobals->f.fpFBP = UTIL_OpenRequiredFile("fbp.mkf");
-    gpGlobals->f.fpDATA = UTIL_OpenRequiredFile("data.mkf");
-    gpGlobals->f.fpFIRE = UTIL_OpenRequiredFile("fire.mkf");
-    gpGlobals->f.fpSSS = UTIL_OpenRequiredFile("sss.mkf");
-    gpGlobals->lpObjectDesc = PAL_LoadObjectDesc(va("%s%s", PAL_PREFIX, "desc.dat"));
-    SOUND_ReloadVOC();
-  }
-  int cbid;
-  cbid = sceKernelCreateCallback("suspend Callback", PSPSuspendCallback, NULL);
-	scePowerRegisterCallback(0, cbid);
-  return 0;
+    if (pwrflags & PSP_POWER_CB_RESUME_COMPLETE)
+    {
+        UTIL_CloseFile(gpGlobals->f.fpFBP);
+        UTIL_CloseFile(gpGlobals->f.fpMGO);
+        UTIL_CloseFile(gpGlobals->f.fpBALL);
+        UTIL_CloseFile(gpGlobals->f.fpDATA);
+        UTIL_CloseFile(gpGlobals->f.fpF);
+        UTIL_CloseFile(gpGlobals->f.fpFIRE);
+        UTIL_CloseFile(gpGlobals->f.fpRGM);
+        UTIL_CloseFile(gpGlobals->f.fpSSS);
+        gpGlobals->f.fpFBP = UTIL_OpenRequiredFile("fbp.mkf");
+        gpGlobals->f.fpDATA = UTIL_OpenRequiredFile("data.mkf");
+        gpGlobals->f.fpFIRE = UTIL_OpenRequiredFile("fire.mkf");
+        gpGlobals->f.fpSSS = UTIL_OpenRequiredFile("sss.mkf");
+        gpGlobals->lpObjectDesc = PAL_LoadObjectDesc(va("%s%s", PAL_PREFIX, "desc.dat"));
+        SOUND_ReloadVOC();
+    }
+    int cbid;
+    cbid = sceKernelCreateCallback("suspend Callback", PSPSuspendCallback, NULL);
+    scePowerRegisterCallback(0, cbid);
+    return 0;
 }
 
 //
@@ -76,13 +76,13 @@ int PSPSuspendCallback(int arg1, int pwrflags, void *common)
 //
 int PSPRegisterCallbackThread(SceSize args, void *argp)
 {
-	int cbid;
-	cbid = sceKernelCreateCallback("Exit Callback", PSPExitCallback, NULL);
-	sceKernelRegisterExitCallback(cbid);
-	cbid = sceKernelCreateCallback("suspend Callback", PSPSuspendCallback, NULL);
-	scePowerRegisterCallback(0, cbid);
-	sceKernelSleepThreadCB();
-	return 0;
+    int cbid;
+    cbid = sceKernelCreateCallback("Exit Callback", PSPExitCallback, NULL);
+    sceKernelRegisterExitCallback(cbid);
+    cbid = sceKernelCreateCallback("suspend Callback", PSPSuspendCallback, NULL);
+    scePowerRegisterCallback(0, cbid);
+    sceKernelSleepThreadCB();
+    return 0;
 }
 
 //
@@ -90,11 +90,11 @@ int PSPRegisterCallbackThread(SceSize args, void *argp)
 //
 int PSPSetupCallbacks(void)
 {
-	int thid = 0;
-	thid = sceKernelCreateThread("update_thread", PSPRegisterCallbackThread, 0x11, 0xFA0, 0, 0);
-	if(thid >= 0)
-		sceKernelStartThread(thid, 0, 0);
-	return thid;
+    int thid = 0;
+    thid = sceKernelCreateThread("update_thread", PSPRegisterCallbackThread, 0x11, 0xFA0, 0, 0);
+    if(thid >= 0)
+        sceKernelStartThread(thid, 0, 0);
+    return thid;
 }
 
 //
@@ -102,15 +102,15 @@ int PSPSetupCallbacks(void)
 //
 void sdlpal_psp_init(void)
 {
-   // Init Debug Screen
-   pspDebugScreenInit();
+    // Init Debug Screen
+    pspDebugScreenInit();
 
-   // PSP set callbacks
-   PSPSetupCallbacks();
+    // PSP set callbacks
+    PSPSetupCallbacks();
 
-   // Register sceKernelExitGame() to be called when we exit 
-   atexit(sceKernelExitGame);
+    // Register sceKernelExitGame() to be called when we exit
+    atexit(sceKernelExitGame);
 
-   // set PSP CPU clock
-   scePowerSetClockFrequency(333 , 333 , 166);
+    // set PSP CPU clock
+    scePowerSetClockFrequency(333, 333, 166);
 }

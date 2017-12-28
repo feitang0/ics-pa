@@ -24,7 +24,7 @@ undefining the macro using `<<#undef isalpha>>'.
 
 RETURNS
 <<isalpha>> returns non-zero if <[c]> is a letter (<<A>>--<<Z>> or
-<<a>>--<<z>>). 
+<<a>>--<<z>>).
 
 PORTABILITY
 <<isalpha>> is ANSI C.
@@ -39,6 +39,6 @@ No supporting OS subroutines are required.
 int
 _DEFUN(isalpha,(c),int c)
 {
-	return((_ctype_ + 1)[c] & (_U|_L));
+    return((_ctype_ + 1)[c] & (_U|_L));
 }
 

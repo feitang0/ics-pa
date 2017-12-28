@@ -33,13 +33,13 @@ extern "C"
 
 VOID
 MIDI_Play(
-   INT       iNumRIX,
-   BOOL      fLoop
+    INT       iNumRIX,
+    BOOL      fLoop
 );
 
 VOID
 MIDI_CheckLoop(
-   VOID
+    VOID
 );
 
 #ifdef __cplusplus

@@ -41,17 +41,17 @@ QUICKREF
 
 _PTR
 _DEFUN (memchr, (src_void, c, length),
-	_CONST _PTR src_void _AND
-	int c _AND
-	size_t length)
+        _CONST _PTR src_void _AND
+        int c _AND
+        size_t length)
 {
-  _CONST unsigned char *src = (_CONST unsigned char *) src_void;
+    _CONST unsigned char *src = (_CONST unsigned char *) src_void;
 
-  while (length--)
+    while (length--)
     {
-      if (*src == c)
-	return (char *) src;
-      src++;
+        if (*src == c)
+            return (char *) src;
+        src++;
     }
-  return NULL;
+    return NULL;
 }

@@ -71,31 +71,31 @@ static char sccsid[] = "%W% (Berkeley) %G%";
 
 int
 _DEFUN (_puts_r, (ptr, s),
-	struct _reent *ptr _AND
-	_CONST char * s)
+        struct _reent *ptr _AND
+        _CONST char * s)
 {
-  size_t c = strlen (s);
-  struct __suio uio;
-  struct __siov iov[2];
+    size_t c = strlen (s);
+    struct __suio uio;
+    struct __siov iov[2];
 
-  iov[0].iov_base = s;
-  iov[0].iov_len = c;
-  iov[1].iov_base = "\n";
-  iov[1].iov_len = 1;
-  uio.uio_resid = c + 1;
-  uio.uio_iov = &iov[0];
-  uio.uio_iovcnt = 2;
+    iov[0].iov_base = s;
+    iov[0].iov_len = c;
+    iov[1].iov_base = "\n";
+    iov[1].iov_len = 1;
+    uio.uio_resid = c + 1;
+    uio.uio_iov = &iov[0];
+    uio.uio_iovcnt = 2;
 
-  return (__sfvwrite (_stdout_r (ptr), &uio) ? EOF : '\n');
+    return (__sfvwrite (_stdout_r (ptr), &uio) ? EOF : '\n');
 }
 
 #ifndef _REENT_ONLY
 
 int
 _DEFUN (puts, (s),
-	char _CONST * s)
+        char _CONST * s)
 {
-  return _puts_r (_REENT, s);
+    return _puts_r (_REENT, s);
 }
 
 #endif

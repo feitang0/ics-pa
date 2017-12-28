@@ -53,11 +53,11 @@ No supporting OS subroutines are required.
 int
 _DEFUN(toupper,(c),int c)
 {
-  return islower(c) ? c - 'a' + 'A' : c;
+    return islower(c) ? c - 'a' + 'A' : c;
 }
 
 int
 _DEFUN(_toupper,(c),int c)
 {
-  return islower(c) ? c - 'a' + 'A' : c;
+    return islower(c) ? c - 'a' + 'A' : c;
 }

@@ -1,7 +1,7 @@
 /*
 FUNCTION
 	<<strcoll>>---locale specific character string compare
-	
+
 INDEX
 	strcoll
 
@@ -40,9 +40,9 @@ QUICKREF
 
 int
 _DEFUN (strcoll, (a, b),
-	_CONST char *a _AND
-	_CONST char *b)
+        _CONST char *a _AND
+        _CONST char *b)
 
 {
-  return strcmp (a, b);
+    return strcmp (a, b);
 }

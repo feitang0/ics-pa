@@ -1,5 +1,5 @@
 /*
-FUNCTION 
+FUNCTION
 	<<isalnum>>---alphanumeric character predicate
 
 INDEX
@@ -41,6 +41,6 @@ No OS subroutines are required.
 int
 _DEFUN(isalnum,(c),int c)
 {
-	return((_ctype_ + 1)[c] & (_U|_L|_N));
+    return((_ctype_ + 1)[c] & (_U|_L|_N));
 }
 

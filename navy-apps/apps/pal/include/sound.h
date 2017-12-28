@@ -39,37 +39,37 @@ extern "C"
 
 INT
 SOUND_OpenAudio(
-   VOID
+    VOID
 );
 
 VOID
 SOUND_CloseAudio(
-   VOID
+    VOID
 );
 
 VOID
 SOUND_PlayChannel(
-   INT    iSoundNum,
-   INT    iChannel
+    INT    iSoundNum,
+    INT    iChannel
 );
 
 #ifdef __SYMBIAN32__
 VOID
 SOUND_AdjustVolume(
-   INT    iDirectory
+    INT    iDirectory
 );
 #endif
 
 VOID
 PAL_PlayMUS(
-   INT       iNumRIX,
-   BOOL      fLoop,
-   FLOAT     flFadeTime
+    INT       iNumRIX,
+    BOOL      fLoop,
+    FLOAT     flFadeTime
 );
 
 BOOL
 SOUND_PlayCDA(
-   INT    iNumTrack
+    INT    iNumTrack
 );
 
 #ifdef PAL_CLASSIC

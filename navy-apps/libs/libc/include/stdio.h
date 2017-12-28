@@ -56,7 +56,7 @@ typedef struct __sFILE FILE;
 #define	__SNBF	0x0002		/* unbuffered */
 #define	__SRD	0x0004		/* OK to read */
 #define	__SWR	0x0008		/* OK to write */
-	/* RD and WR are never simultaneously asserted */
+/* RD and WR are never simultaneously asserted */
 #define	__SRW	0x0010		/* open for reading & writing */
 #define	__SEOF	0x0020		/* found EOF */
 #define	__SERR	0x0040		/* found error */
@@ -156,7 +156,7 @@ int	_EXFUN(putchar, (int));
 int	_EXFUN(puts, (const char *));
 int	_EXFUN(ungetc, (int, FILE *));
 size_t	_EXFUN(fread, (_PTR, size_t _size, size_t _n, FILE *));
-size_t	_EXFUN(fwrite, (const _PTR , size_t _size, size_t _n, FILE *));
+size_t	_EXFUN(fwrite, (const _PTR, size_t _size, size_t _n, FILE *));
 int	_EXFUN(fgetpos, (FILE *, fpos_t *));
 int	_EXFUN(fseek, (FILE *, long, int));
 int	_EXFUN(fsetpos, (FILE *, const fpos_t *));
@@ -210,7 +210,7 @@ int	_EXFUN(_putchar_r, (struct _reent *, int));
 int	_EXFUN(_puts_r, (struct _reent *, const char *));
 int	_EXFUN(_remove_r, (struct _reent *, const char *));
 int	_EXFUN(_rename_r, (struct _reent *,
-			   const char *_old, const char *_new));
+                       const char *_old, const char *_new));
 int	_EXFUN(_scanf_r, (struct _reent *, const char *, ...));
 int	_EXFUN(_sprintf_r, (struct _reent *, char *, const char *, ...));
 char *	_EXFUN(_tempnam_r, (struct _reent *, char *, char *));
@@ -233,17 +233,17 @@ int	_EXFUN(__swbuf, (int, FILE *));
 
 #ifndef _STRICT_ANSI
 FILE	*_EXFUN(funopen,(const _PTR _cookie,
-		int (*readfn)(_PTR _cookie, char *_buf, int _n),
-		int (*writefn)(_PTR _cookie, const char *_buf, int _n),
-		fpos_t (*seekfn)(_PTR _cookie, fpos_t _off, int _whence),
-		int (*closefn)(_PTR _cookie)));
+                         int (*readfn)(_PTR _cookie, char *_buf, int _n),
+                         int (*writefn)(_PTR _cookie, const char *_buf, int _n),
+                         fpos_t (*seekfn)(_PTR _cookie, fpos_t _off, int _whence),
+                         int (*closefn)(_PTR _cookie)));
 
 #define	fropen(cookie, fn) funopen(cookie, fn, (int (*)())0, (fpos_t (*)())0, (int (*)())0)
 #define	fwopen(cookie, fn) funopen(cookie, (int (*)())0, fn, (fpos_t (*)())0, (int (*)())0)
 #endif
 
 /*
- * The __sfoo macros are here so that we can 
+ * The __sfoo macros are here so that we can
  * define function versions in the C library.
  */
 #define	__sgetc(p) (--(p)->_r < 0 ? __srget(p) : (int)(*(p)->_p++))
@@ -251,10 +251,10 @@ FILE	*_EXFUN(funopen,(const _PTR _cookie,
 /* If this inline is actually used, then systems using coff debugging
    info get hopelessly confused.  21sept93 rich@cygnus.com.  */
 static __inline int __sputc(int _c, FILE *_p) {
-	if (--_p->_w >= 0 || (_p->_w >= _p->_lbfsize && (char)_c != '\n'))
-		return (*_p->_p++ = _c);
-	else
-		return (__swbuf(_c, _p));
+    if (--_p->_w >= 0 || (_p->_w >= _p->_lbfsize && (char)_c != '\n'))
+        return (*_p->_p++ = _c);
+    else
+        return (__swbuf(_c, _p));
 }
 #else
 /*

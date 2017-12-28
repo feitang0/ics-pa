@@ -38,6 +38,6 @@ No supporting OS subroutines are required.
 int
 _DEFUN(isupper,(c),int c)
 {
-	return((_ctype_ + 1)[c] & _U);
+    return((_ctype_ + 1)[c] & _U);
 }
 

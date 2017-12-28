@@ -19,16 +19,16 @@ extern "C" {
 
 #include <sys/reent.h>
 
-typedef struct 
+typedef struct
 {
-  int quot; /* quotient */
-  int rem; /* remainder */
+    int quot; /* quotient */
+    int rem; /* remainder */
 } div_t;
 
-typedef struct 
+typedef struct
 {
-  long quot; /* quotient */
-  long rem; /* remainder */
+    long quot; /* quotient */
+    long rem; /* remainder */
 } ldiv_t;
 
 #ifndef NULL
@@ -40,7 +40,7 @@ typedef struct
 
 #define RAND_MAX 0x7fffffff
 
-#define MB_CUR_MAX 1 
+#define MB_CUR_MAX 1
 
 _VOID	_EXFUN(abort,(_VOID) _ATTRIBUTE ((noreturn)));
 int	_EXFUN(abs,(int));
@@ -52,10 +52,10 @@ float	_EXFUN(atoff,(const char *_nptr));
 int	_EXFUN(atoi,(const char *_nptr));
 long	_EXFUN(atol,(const char *_nptr));
 _PTR	_EXFUN(bsearch,(const _PTR _key,
-		       const _PTR _base,
-		       size_t _nmemb,
-		       size_t _size,
-		       int _EXFUN((*_compar),(const _PTR, const _PTR))));
+                        const _PTR _base,
+                        size_t _nmemb,
+                        size_t _size,
+                        int _EXFUN((*_compar),(const _PTR, const _PTR))));
 _PTR	_EXFUN(calloc,(size_t _nmemb, size_t _size));
 div_t	_EXFUN(div,(int _numer, int _denom));
 _VOID	_EXFUN(exit,(int _status) _ATTRIBUTE ((noreturn)));

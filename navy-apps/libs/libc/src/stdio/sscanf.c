@@ -32,7 +32,7 @@ ANSI_SYNOPSIS
 
         int scanf(const char *<[format]> [, <[arg]>, ...]);
         int fscanf(FILE *<[fd]>, const char *<[format]> [, <[arg]>, ...]);
-        int sscanf(const char *<[str]>, const char *<[format]> 
+        int sscanf(const char *<[str]>, const char *<[format]>
                    [, <[arg]>, ...]);
 
 
@@ -191,7 +191,7 @@ DESCRIPTION
 		o u
 		Reads an unsigned decimal integer into the corresponding
 		<[arg]>: <<(unsigned int *arg)>>.
-			
+
 
 		o U
 		Reads an unsigned decimal integer into the corresponding <[arg]>:
@@ -225,7 +225,7 @@ DESCRIPTION
                 Stores a scanned pointer.  ANSI C leaves the details
 		to each implementation; this implementation treats
 		<<%p>> exactly the same as <<%U>>.  Corresponding
-		<[arg]>: <<(void **arg)>>.  
+		<[arg]>: <<(void **arg)>>.
                 o-
 
 	A <[pattern]> of characters surrounded by square brackets can be used
@@ -346,41 +346,41 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 static
 int
 eofread (cookie, buf, len)
-     _PTR cookie;
-     char *buf;
-     int len;
+_PTR cookie;
+char *buf;
+int len;
 {
-  return 0;
+    return 0;
 }
 
 #ifdef _HAVE_STDC
-int 
+int
 _DEFUN (sscanf, (str, fmt), _CONST char *str _AND _CONST char *fmt _DOTS)
 #else
-int 
+int
 sscanf (str, fmt, va_alist)
-     _CONST char *str;
-     _CONST char *fmt;
-     va_dcl
+_CONST char *str;
+_CONST char *fmt;
+va_dcl
 #endif
 {
-  int ret;
-  va_list ap;
-  FILE f;
+    int ret;
+    va_list ap;
+    FILE f;
 
-  f._flags = __SRD;
-  f._bf._base = f._p = (unsigned char *) str;
-  f._bf._size = f._r = strlen (str);
-  f._read = eofread;
-  f._ub._base = NULL;
-  f._lb._base = NULL;
-  f._data = _REENT;
+    f._flags = __SRD;
+    f._bf._base = f._p = (unsigned char *) str;
+    f._bf._size = f._r = strlen (str);
+    f._read = eofread;
+    f._ub._base = NULL;
+    f._lb._base = NULL;
+    f._data = _REENT;
 #ifdef _HAVE_STDC
-  va_start (ap, fmt);
+    va_start (ap, fmt);
 #else
-  va_start (ap);
+    va_start (ap);
 #endif
-  ret = __svfscanf (&f, fmt, ap);
-  va_end (ap);
-  return ret;
+    ret = __svfscanf (&f, fmt, ap);
+    va_end (ap);
+    return ret;
 }

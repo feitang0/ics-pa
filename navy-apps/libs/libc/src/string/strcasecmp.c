@@ -1,7 +1,7 @@
 /*
 FUNCTION
 	<<strcasecmp>>---case insensitive character string compare
-	
+
 INDEX
 	strcasecmp
 
@@ -19,7 +19,7 @@ DESCRIPTION
 	<<strcasecmp>> compares the string at <[a]> to
 	the string at <[b]> in a case-insensitive manner.
 
-RETURNS 
+RETURNS
 
 	If <<*<[a]>>> sorts lexicographically after <<*<[b]>>> (after
 	both are converted to upper case), <<strcasecmp>> returns a
@@ -35,7 +35,7 @@ PORTABILITY
 toupper() from elsewhere in this library.
 
 QUICKREF
-	strcasecmp 
+	strcasecmp
 */
 
 #include <string.h>
@@ -43,14 +43,14 @@ QUICKREF
 
 int
 _DEFUN (strcasecmp, (s1, s2),
-	_CONST char *s1 _AND
-	_CONST char *s2)
+        _CONST char *s1 _AND
+        _CONST char *s2)
 {
-  while (*s1 != '\0' && toupper(*s1) == toupper(*s2))
+    while (*s1 != '\0' && toupper(*s1) == toupper(*s2))
     {
-      s1++;
-      s2++;
+        s1++;
+        s2++;
     }
 
-  return toupper(*(unsigned char *) s1) - toupper(*(unsigned char *) s2);
+    return toupper(*(unsigned char *) s1) - toupper(*(unsigned char *) s2);
 }

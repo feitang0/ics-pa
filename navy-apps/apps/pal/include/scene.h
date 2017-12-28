@@ -29,35 +29,35 @@ extern "C"
 
 VOID
 PAL_ApplyWave(
-   SDL_Surface    *lpSurface
+    SDL_Surface    *lpSurface
 );
 
 VOID
 PAL_MakeScene(
-   VOID
+    VOID
 );
 
 BOOL
 PAL_CheckObstacle(
-   PAL_POS         pos,
-   BOOL            fCheckEventObjects,
-   WORD            wSelfObject
+    PAL_POS         pos,
+    BOOL            fCheckEventObjects,
+    WORD            wSelfObject
 );
 
 VOID
 PAL_UpdatePartyGestures(
-   BOOL             fWalking
+    BOOL             fWalking
 );
 
 VOID
 PAL_UpdateParty(
-   VOID
+    VOID
 );
 
 VOID
 PAL_NPCWalkOneStep(
-   WORD          wEventObjectID,
-   INT           iSpeed
+    WORD          wEventObjectID,
+    INT           iSpeed
 );
 
 #ifdef	__cplusplus

@@ -43,7 +43,7 @@ PORTABILITY
 programs.
 
 No supporting OS subroutines are required.
-*/ 
+*/
 
 #include <_ansi.h>
 #include <ctype.h>
@@ -54,7 +54,7 @@ No supporting OS subroutines are required.
 int
 _DEFUN(tolower,(c),int c)
 {
-	return isupper(c) ? (c) - 'A' + 'a' : c;
+    return isupper(c) ? (c) - 'A' + 'a' : c;
 }
 
 
@@ -65,6 +65,6 @@ _DEFUN(tolower,(c),int c)
 int
 _DEFUN(_tolower,(c),int c)
 {
-	return isupper(c) ? (c) - 'A' + 'a' : c;
+    return isupper(c) ? (c) - 'A' + 'a' : c;
 }
 

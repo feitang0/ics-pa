@@ -133,9 +133,9 @@
 typedef unsigned long sigset_t;	/* yes, limited to 32 signals. *sigh* */
 
 struct sigaction {
-	void (*sa_handler)();
-	sigset_t sa_mask;
-	int sa_flags;
+    void (*sa_handler)();
+    sigset_t sa_mask;
+    int sa_flags;
 };
 
 #define SA_NOCLDSTOP 1	/* only value supported now for sa_flags */

@@ -39,11 +39,11 @@ No supporting OS subroutine calls are required.
 
 long
 _DEFUN (labs, (x),
-	long x)
+        long x)
 {
-  if (x < 0)
+    if (x < 0)
     {
-      x = -x;
+        x = -x;
     }
-  return x;
+    return x;
 }

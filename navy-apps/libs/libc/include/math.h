@@ -17,8 +17,8 @@ extern "C" {
 
 union __dmath
 {
-  __uint32_t i[2];
-  double d;
+    __uint32_t i[2];
+    double d;
 };
 
 extern const union __dmath __infinity;
@@ -288,14 +288,14 @@ extern float _hypotf_r _PARAMS((struct _reent *, float, float));
 
 /* The exception structure passed to the matherr routine.  */
 
-struct exception 
+struct exception
 {
-  int type;
-  char *name;
-  double arg1;
-  double arg2;
-  double retval;
-  int err;
+    int type;
+    char *name;
+    double arg1;
+    double arg2;
+    double retval;
+    int err;
 };
 
 extern int matherr _PARAMS((struct exception *e));
@@ -338,10 +338,10 @@ extern int matherr _PARAMS((struct exception *e));
 
 enum __fdlibm_version
 {
-  __fdlibm_ieee = -1,
-  __fdlibm_svid,
-  __fdlibm_xopen,
-  __fdlibm_posix
+    __fdlibm_ieee = -1,
+    __fdlibm_svid,
+    __fdlibm_xopen,
+    __fdlibm_posix
 };
 
 #define _LIB_VERSION_TYPE enum __fdlibm_version

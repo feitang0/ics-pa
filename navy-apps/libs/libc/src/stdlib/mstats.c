@@ -18,16 +18,16 @@ int _dummy_mstats = 1;
 
 void
 _DEFUN (mstats, (s),
-	char *s)
+        char *s)
 {
-  _mstats_r (_REENT, s);
+    _mstats_r (_REENT, s);
 }
 
 #endif
 #else
 
 mstats ()
-{				/* dummy to keep people happy */
+{   /* dummy to keep people happy */
 }
 
 #endif

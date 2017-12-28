@@ -6,7 +6,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -36,7 +36,7 @@ TRAD_SYNOPSIS
 
 DESCRIPTION
 	<<sinh>> computes the hyperbolic sine of the argument <[x]>.
-	Angles are specified in radians.   <<sinh>>(<[x]>) is defined as 
+	Angles are specified in radians.   <<sinh>>(<[x]>) is defined as
 	@ifinfo
 	. (exp(<[x]>) - exp(-<[x]>))/2
 	@end ifinfo
@@ -47,17 +47,17 @@ DESCRIPTION
 	<<sinhf>> is identical, save that it takes and returns <<float>> values.
 
 RETURNS
-	The hyperbolic sine of <[x]> is returned.  
+	The hyperbolic sine of <[x]> is returned.
 
 	When the correct result is too large to be representable (an
 	overflow),  <<sinh>> returns <<HUGE_VAL>> with the
 	appropriate sign, and sets the global value <<errno>> to
-	<<ERANGE>>. 
+	<<ERANGE>>.
 
 	You can modify error handling for these functions with <<matherr>>.
 
 PORTABILITY
-	<<sinh>> is ANSI C.  
+	<<sinh>> is ANSI C.
 	<<sinhf>> is an extension.
 
 QUICKREF
@@ -65,7 +65,7 @@ QUICKREF
 	sinhf - pure
 */
 
-/* 
+/*
  * wrapper sinh(x)
  */
 
@@ -78,26 +78,26 @@ QUICKREF
 #if defined (_LIBM_REENT) || ! defined (_REENT_ONLY)
 
 #ifdef __STDC__
-	double sinh(_R1 double x)		/* wrapper sinh */
+double sinh(_R1 double x)		/* wrapper sinh */
 #else
-	double sinh(_R2 x)			/* wrapper sinh */
-	_R3 double x;
+double sinh(_R2 x)			/* wrapper sinh */
+_R3 double x;
 #endif
 {
 #ifndef _DOUBLE_IS_32BITS
 #ifdef _IEEE_LIBM
-	return __ieee754_sinh(x);
+    return __ieee754_sinh(x);
 #else
-	double z; 
-	z = __ieee754_sinh(x);
-	if(_LIB_VERSION == _IEEE_) return z;
-	if(!finite(z)&&finite(x)) {
-	    return __kernel_standard(_R4,x,x,25); /* sinh overflow */
-	} else
-	    return z;
+    double z;
+    z = __ieee754_sinh(x);
+    if(_LIB_VERSION == _IEEE_) return z;
+    if(!finite(z)&&finite(x)) {
+        return __kernel_standard(_R4,x,x,25); /* sinh overflow */
+    } else
+        return z;
 #endif
 #else /* defined (_DOUBLE_IS_32BITS) */
-	return (double) _sinhf_r (_R4, (float) x);
+    return (double) _sinhf_r (_R4, (float) x);
 #endif /* defined (_DOUBLE_IS_32BITS) */
 }
 

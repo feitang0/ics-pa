@@ -21,7 +21,7 @@ DESCRIPTION
 	object pointed to by <[s1]> with the object pointed to by <[s2]>.
 
 	This function is identical to <<memcmp>>.
-	
+
 
 
 RETURNS
@@ -41,10 +41,10 @@ QUICKREF
 
 int
 _DEFUN (bcmp, (m1, m2, n),
-	_CONST char *m1 _AND
-	_CONST char *m2 _AND
-	size_t n)
+        _CONST char *m1 _AND
+        _CONST char *m2 _AND
+        size_t n)
 
 {
-  return memcmp (m1, m2, n);
+    return memcmp (m1, m2, n);
 }

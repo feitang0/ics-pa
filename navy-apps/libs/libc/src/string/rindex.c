@@ -37,8 +37,8 @@ QUICKREF
 
 char *
 _DEFUN (rindex, (s, c),
-	_CONST char *s _AND
-	int c)
+        _CONST char *s _AND
+        int c)
 {
-  return strrchr (s, c);
+    return strrchr (s, c);
 }

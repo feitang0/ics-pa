@@ -29,31 +29,31 @@ extern "C"
 
 VOID
 PAL_EndingSetEffectSprite(
-   WORD         wSpriteNum
+    WORD         wSpriteNum
 );
 
 VOID
 PAL_ShowFBP(
-   WORD         wChunkNum,
-   WORD         wFade
+    WORD         wChunkNum,
+    WORD         wFade
 );
 
 VOID
 PAL_ScrollFBP(
-   WORD         wChunkNum,
-   WORD         wScrollSpeed,
-   BOOL         fScrollDown
+    WORD         wChunkNum,
+    WORD         wScrollSpeed,
+    BOOL         fScrollDown
 );
 
 VOID
 PAL_EndingAnimation(
-   VOID
+    VOID
 );
 
 #ifdef PAL_WIN95
 VOID
 PAL_EndingScreen(
-   VOID
+    VOID
 );
 #endif
 

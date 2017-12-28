@@ -22,13 +22,13 @@ extern "C" {
 #define _SYS_TIME_H_
 
 struct timeval {
-  long tv_sec;
-  long tv_usec;
+    long tv_sec;
+    long tv_usec;
 };
 
 struct timezone {
-  int tz_minuteswest;
-  int tz_dsttime;
+    int tz_minuteswest;
+    int tz_dsttime;
 };
 
 #ifdef __cplusplus

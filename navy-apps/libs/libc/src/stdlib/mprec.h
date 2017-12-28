@@ -203,7 +203,7 @@ extern double rnd_prod(double, double), rnd_quot(double, double);
 #ifdef __cplusplus
 extern "C" double strtod(const char *s00, char **se);
 extern "C" char *dtoa(double d, int mode, int ndigits,
-			int *decpt, int *sign, char **rve);
+                      int *decpt, int *sign, char **rve);
 #endif
 
 
@@ -220,7 +220,7 @@ typedef struct _Bigint _Bigint;
 #define diff __mdiff
 struct _reent ;
 double 		_EXFUN(ulp,(double x));
-double		_EXFUN(b2d,(_Bigint *a , int *e));
+double		_EXFUN(b2d,(_Bigint *a, int *e));
 _Bigint *	_EXFUN(Balloc,(struct _reent *p, int k));
 void 		_EXFUN(Bfree,(struct _reent *p, _Bigint *v));
 _Bigint *	_EXFUN(multadd,(struct _reent *p, _Bigint *, int, int));

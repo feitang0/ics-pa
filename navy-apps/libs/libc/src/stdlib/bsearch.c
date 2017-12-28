@@ -64,37 +64,37 @@ No supporting OS subroutines are required.
 
 _PTR
 _DEFUN (bsearch, (key, base, nmemb, size, compar),
-	_CONST _PTR key _AND
-	_CONST _PTR base _AND
-	size_t nmemb _AND
-	size_t size _AND
-	int _EXFUN ((*compar), (const _PTR, const _PTR)))
+        _CONST _PTR key _AND
+        _CONST _PTR base _AND
+        size_t nmemb _AND
+        size_t size _AND
+        int _EXFUN ((*compar), (const _PTR, const _PTR)))
 {
-  _PTR current;
-  int result;
+    _PTR current;
+    int result;
 
-  if (nmemb == 0 || size == 0)
-    return NULL;
+    if (nmemb == 0 || size == 0)
+        return NULL;
 
-  while (nmemb)
+    while (nmemb)
     {
-      current = (_PTR) (((char *) base) + ((nmemb / 2) * size));
+        current = (_PTR) (((char *) base) + ((nmemb / 2) * size));
 
-      result = compar (key, current);
+        result = compar (key, current);
 
-      if (result < 0)
-	nmemb /= 2;
-      else if (result > 0)
-	{
-	  base = (_PTR) (((char *) current) + size);
-	  nmemb = (nmemb / 2) - (nmemb % 2 ? 0 : 1);
-	}
-      else
-	return current;
+        if (result < 0)
+            nmemb /= 2;
+        else if (result > 0)
+        {
+            base = (_PTR) (((char *) current) + size);
+            nmemb = (nmemb / 2) - (nmemb % 2 ? 0 : 1);
+        }
+        else
+            return current;
     }
 
-  if (compar (key, base) == 0)
-    return (_PTR) base;
+    if (compar (key, base) == 0)
+        return (_PTR) base;
 
-  return NULL;
+    return NULL;
 }

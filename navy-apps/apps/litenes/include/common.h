@@ -31,22 +31,24 @@ void common_toggle_bitd(dword *variable, byte position);
 void common_modify_bitd(dword *variable, byte position, bool set);
 
 static inline void* memcpy(void *dest, const void *src, size_t n) {
-  char *csrc = (char*)src, *cdest = (char*)dest;
-  for (int i = 0; i < n; i ++) {
-    cdest[i] = csrc[i];
-  }
-  return dest;
+    char *csrc = (char*)src, *cdest = (char*)dest;
+    for (int i = 0; i < n; i ++) {
+        cdest[i] = csrc[i];
+    }
+    return dest;
 }
 
 static inline int memcmp(const void *dest, const void *src, size_t n) {
-  unsigned char *csrc = (unsigned char*)src, *cdest = (unsigned char*)dest;
-  for (int i = 0; i < n; i ++) {
-    if (csrc[i] < cdest[i]) return -1;
-    if (csrc[i] > cdest[i]) return 1;
-  }
-  return 0;
+    unsigned char *csrc = (unsigned char*)src, *cdest = (unsigned char*)dest;
+    for (int i = 0; i < n; i ++) {
+        if (csrc[i] < cdest[i]) return -1;
+        if (csrc[i] > cdest[i]) return 1;
+    }
+    return 0;
 }
 
-static inline bool common_bit_set(unsigned long value, byte position) { return value & (1L << position); }
+static inline bool common_bit_set(unsigned long value, byte position) {
+    return value & (1L << position);
+}
 
 #endif

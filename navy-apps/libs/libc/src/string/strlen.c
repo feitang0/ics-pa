@@ -1,7 +1,7 @@
-/* 
+/*
 FUNCTION
 	<<strlen>>---character string length
-	
+
 INDEX
 	strlen
 
@@ -36,12 +36,12 @@ QUICKREF
 
 size_t
 _DEFUN (strlen, (str),
-	_CONST char *str)
+        _CONST char *str)
 {
-  _CONST char *start = str;
+    _CONST char *start = str;
 
-  while (*str)
-    str++;
+    while (*str)
+        str++;
 
-  return str - start;
+    return str - start;
 }

@@ -37,15 +37,15 @@
 typedef void (*Pfunc) (lua_State *L, void *ud);
 
 LUAI_FUNC int luaD_protectedparser (lua_State *L, ZIO *z, const char *name,
-                                                  const char *mode);
+                                    const char *mode);
 LUAI_FUNC void luaD_hook (lua_State *L, int event, int line);
 LUAI_FUNC int luaD_precall (lua_State *L, StkId func, int nresults);
 LUAI_FUNC void luaD_call (lua_State *L, StkId func, int nResults);
 LUAI_FUNC void luaD_callnoyield (lua_State *L, StkId func, int nResults);
 LUAI_FUNC int luaD_pcall (lua_State *L, Pfunc func, void *u,
-                                        ptrdiff_t oldtop, ptrdiff_t ef);
+                          ptrdiff_t oldtop, ptrdiff_t ef);
 LUAI_FUNC int luaD_poscall (lua_State *L, CallInfo *ci, StkId firstResult,
-                                          int nres);
+                            int nres);
 LUAI_FUNC void luaD_reallocstack (lua_State *L, int newsize);
 LUAI_FUNC void luaD_growstack (lua_State *L, int n);
 LUAI_FUNC void luaD_shrinkstack (lua_State *L);

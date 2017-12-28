@@ -225,184 +225,184 @@ QUICKREF
 
 char *
 _DEFUN (strerror, (errnum),
-	int errnum)
+        int errnum)
 {
-  char *error;
+    char *error;
 
-  switch (errnum)
+    switch (errnum)
     {
     case EPERM:
-      error = "Not owner";
-      break;
+        error = "Not owner";
+        break;
     case ENOENT:
-      error = "No such file or directory";
-      break;
+        error = "No such file or directory";
+        break;
     case ESRCH:
-      error = "No such process";
-      break;
+        error = "No such process";
+        break;
     case EINTR:
-      error = "Interrupted system call";
-      break;
+        error = "Interrupted system call";
+        break;
     case EIO:
-      error = "I/O error";
-      break;
+        error = "I/O error";
+        break;
     case ENXIO:
-      error = "No such device or address";
-      break;
+        error = "No such device or address";
+        break;
     case E2BIG:
-      error = "Arg list too long";
-      break;
+        error = "Arg list too long";
+        break;
     case ENOEXEC:
-      error = "Exec format error";
-      break;
+        error = "Exec format error";
+        break;
     case EBADF:
-      error = "Bad file number";
-      break;
+        error = "Bad file number";
+        break;
     case ECHILD:
-      error = "No children";
-      break;
+        error = "No children";
+        break;
     case EAGAIN:
-      error = "No more processes";
-      break;
+        error = "No more processes";
+        break;
     case ENOMEM:
-      error = "Not enough space";
-      break;
+        error = "Not enough space";
+        break;
     case EACCES:
-      error = "Permission denied";
-      break;
+        error = "Permission denied";
+        break;
     case EFAULT:
-      error = "Bad address";
-      break;
+        error = "Bad address";
+        break;
     case ENOTBLK:
-      error = "Block device required";
-      break;
+        error = "Block device required";
+        break;
     case EBUSY:
-      error = "Device or resource busy";
-      break;
+        error = "Device or resource busy";
+        break;
     case EEXIST:
-      error = "File exists";
-      break;
+        error = "File exists";
+        break;
     case EXDEV:
-      error = "Cross-device link";
-      break;
+        error = "Cross-device link";
+        break;
     case ENODEV:
-      error = "No such device";
-      break;
+        error = "No such device";
+        break;
     case ENOTDIR:
-      error = "Not a directory";
-      break;
+        error = "Not a directory";
+        break;
     case EISDIR:
-      error = "Is a directory";
-      break;
+        error = "Is a directory";
+        break;
     case EINVAL:
-      error = "Invalid argument";
-      break;
+        error = "Invalid argument";
+        break;
     case ENFILE:
-      error = "File table overflow";
-      break;
+        error = "File table overflow";
+        break;
     case EMFILE:
-      error = "Too many open files";
-      break;
+        error = "Too many open files";
+        break;
     case ENOTTY:
-      error = "Not a character device";
-      break;
+        error = "Not a character device";
+        break;
     case ETXTBSY:
-      error = "Text file busy";
-      break;
+        error = "Text file busy";
+        break;
     case EFBIG:
-      error = "File too large";
-      break;
+        error = "File too large";
+        break;
     case ENOSPC:
-      error = "No space left on device";
-      break;
+        error = "No space left on device";
+        break;
     case ESPIPE:
-      error = "Illegal seek";
-      break;
+        error = "Illegal seek";
+        break;
     case EROFS:
-      error = "Read-only file system";
-      break;
+        error = "Read-only file system";
+        break;
     case EMLINK:
-      error = "Too many links";
-      break;
+        error = "Too many links";
+        break;
     case EPIPE:
-      error = "Broken pipe";
-      break;
+        error = "Broken pipe";
+        break;
     case EDOM:
-      error = "Math argument";
-      break;
+        error = "Math argument";
+        break;
     case ERANGE:
-      error = "Result too large";
-      break;
+        error = "Result too large";
+        break;
     case ENOMSG:
-      error = "No message of desired type";
-      break;
+        error = "No message of desired type";
+        break;
     case EIDRM:
-      error = "Identifier removed";
-      break;
+        error = "Identifier removed";
+        break;
     case EDEADLK:
-      error = "Deadlock";
-      break;
+        error = "Deadlock";
+        break;
     case ENOLCK:
-      error = "No lock";
-      break;
+        error = "No lock";
+        break;
     case ENOSTR:
-      error = "Not a stream";
-      break;
+        error = "Not a stream";
+        break;
     case ETIME:
-      error = "Stream ioctl timeout";
-      break;
+        error = "Stream ioctl timeout";
+        break;
     case ENOSR:
-      error = "No stream resources";
-      break;
+        error = "No stream resources";
+        break;
     case ENONET:
-      error = "Machine is not on the network";
-      break;
+        error = "Machine is not on the network";
+        break;
     case ENOPKG:
-      error = "No package";
-      break;
+        error = "No package";
+        break;
     case EREMOTE:
-      error = "Resource is remote";
-      break;
+        error = "Resource is remote";
+        break;
     case ENOLINK:
-      error = "Virtual circuit is gone";
-      break;
+        error = "Virtual circuit is gone";
+        break;
     case EADV:
-      error = "Advertise error";
-      break;
+        error = "Advertise error";
+        break;
     case ESRMNT:
-      error = "Srmount error";
-      break;
+        error = "Srmount error";
+        break;
     case ECOMM:
-      error = "Communication error";
-      break;
+        error = "Communication error";
+        break;
     case EPROTO:
-      error = "Protocol error";
-      break;
+        error = "Protocol error";
+        break;
     case EMULTIHOP:
-      error = "Multihop attempted";
-      break;
+        error = "Multihop attempted";
+        break;
     case EBADMSG:
-      error = "Bad message";
-      break;
+        error = "Bad message";
+        break;
     case ELIBACC:
-      error = "Cannot access a needed shared library";
-      break;
+        error = "Cannot access a needed shared library";
+        break;
     case ELIBBAD:
-      error = "Accessing a corrupted shared library";
-      break;
+        error = "Accessing a corrupted shared library";
+        break;
     case ELIBSCN:
-      error = ".lib section in a.out corrupted";
-      break;
+        error = ".lib section in a.out corrupted";
+        break;
     case ELIBMAX:
-      error = "Attempting to link in more shared libraries than system limit";
-      break;
+        error = "Attempting to link in more shared libraries than system limit";
+        break;
     case ELIBEXEC:
-      error = "Cannot exec a shared library directly";
-      break;
+        error = "Cannot exec a shared library directly";
+        break;
     default:
-      error = "";
-      break;
+        error = "";
+        break;
     }
 
-  return error;
+    return error;
 }

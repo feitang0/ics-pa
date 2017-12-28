@@ -55,9 +55,9 @@ void qsort(void *base, size_t nmemb, size_t size, int (*compar)(const void *, co
 
 // assert.h
 #ifdef NDEBUG
-  #define assert(ignore) ((void)0)
+#define assert(ignore) ((void)0)
 #else
-  #define assert(cond) \
+#define assert(cond) \
     do { \
       if (!(cond)) { \
         printk("Assertion fail at %s:%d\n", __FILE__, __LINE__); \

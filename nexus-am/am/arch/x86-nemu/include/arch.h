@@ -7,8 +7,8 @@
 #define PGSIZE    4096    // Bytes mapped by a page
 
 struct _RegSet {
-  uintptr_t esi, ebx, eax, eip, edx, error_code, eflags, ecx, cs, esp, edi, ebp;
-  int       irq;
+    uintptr_t esi, ebx, eax, eip, edx, error_code, eflags, ecx, cs, esp, edi, ebp;
+    int       irq;
 };
 
 #define SYSCALL_ARG1(r) 0

@@ -6,7 +6,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -32,7 +32,7 @@ TRAD_SYNOPSIS
 DESCRIPTION
 
 	<<cosh>> computes the hyperbolic cosine of the argument <[x]>.
-	<<cosh(<[x]>)>> is defined as 
+	<<cosh(<[x]>)>> is defined as
 	@ifinfo
 	. (exp(x) + exp(-x))/2
 	@end ifinfo
@@ -40,8 +40,8 @@ DESCRIPTION
 	$${(e^x + e^{-x})} \over 2$$
 	@end tex
 
-	Angles are specified in radians.  
-		
+	Angles are specified in radians.
+
 	<<coshf>> is identical, save that it takes and returns <<float>>.
 
 RETURNS
@@ -53,7 +53,7 @@ RETURNS
 	function <<matherr>>.
 
 PORTABILITY
-	<<cosh>> is ANSI.  
+	<<cosh>> is ANSI.
 	<<coshf>> is an extension.
 
 QUICKREF
@@ -61,7 +61,7 @@ QUICKREF
 	coshf - pure
 */
 
-/* 
+/*
  * wrapper cosh(x)
  */
 
@@ -73,26 +73,26 @@ QUICKREF
 
 #if defined (_LIBM_REENT) || ! defined (_REENT_ONLY)
 #ifdef __STDC__
-	double cosh(_R1 double x)		/* wrapper cosh */
+double cosh(_R1 double x)		/* wrapper cosh */
 #else
-	double cosh(_R2 x)			/* wrapper cosh */
-	_R3 double x;
+double cosh(_R2 x)			/* wrapper cosh */
+_R3 double x;
 #endif
 {
 #ifndef _DOUBLE_IS_32BITS
 #ifdef _IEEE_LIBM
-	return __ieee754_cosh(x);
+    return __ieee754_cosh(x);
 #else
-	double z;
-	z = __ieee754_cosh(x);
-	if(_LIB_VERSION == _IEEE_ || isnan(x)) return z;
-	if(fabs(x)>7.10475860073943863426e+02) {	
-	        return __kernel_standard(_R4,x,x,5); /* cosh overflow */
-	} else
-	    return z;
+    double z;
+    z = __ieee754_cosh(x);
+    if(_LIB_VERSION == _IEEE_ || isnan(x)) return z;
+    if(fabs(x)>7.10475860073943863426e+02) {
+        return __kernel_standard(_R4,x,x,5); /* cosh overflow */
+    } else
+        return z;
 #endif
 #else /* defined (_DOUBLE_IS_32BITS) */
-	return (double) _coshf_r (_R4, (float) x);
+    return (double) _coshf_r (_R4, (float) x);
 #endif /* defined (_DOUBLE_IS_32BITS) */
 }
 

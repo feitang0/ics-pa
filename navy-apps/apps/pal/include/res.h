@@ -29,48 +29,48 @@ extern "C"
 
 typedef enum tagLOADRESFLAG
 {
-   kLoadScene          = (1 << 0),    // load a scene
-   kLoadPlayerSprite   = (1 << 1),    // load player sprites
+    kLoadScene          = (1 << 0),    // load a scene
+    kLoadPlayerSprite   = (1 << 1),    // load player sprites
 } LOADRESFLAG, *LPLOADRESFLAG;
 
 VOID
 PAL_InitResources(
-   VOID
+    VOID
 );
 
 VOID
 PAL_FreeResources(
-   VOID
+    VOID
 );
 
 VOID
 PAL_SetLoadFlags(
-   BYTE       bFlags
+    BYTE       bFlags
 );
 
 VOID
 PAL_LoadResources(
-   VOID
+    VOID
 );
 
 LPPALMAP
 PAL_GetCurrentMap(
-   VOID
+    VOID
 );
 
 LPSPRITE
 PAL_GetPlayerSprite(
-   BYTE      bPlayerIndex
+    BYTE      bPlayerIndex
 );
 
 LPSPRITE
 PAL_GetBattleSprite(
-   BYTE      bPlayerIndex
+    BYTE      bPlayerIndex
 );
 
 LPSPRITE
 PAL_GetEventObjectSprite(
-   WORD      wEventObjectID
+    WORD      wEventObjectID
 );
 
 #ifdef __cplusplus

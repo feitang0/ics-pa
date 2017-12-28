@@ -66,14 +66,14 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 
 double
 _DEFUN (atof, (s),
-	_CONST char *s)
+        _CONST char *s)
 {
-  return strtod (s, NULL);
+    return strtod (s, NULL);
 }
 
 float
 _DEFUN (atoff, (s),
-	_CONST char *s)
+        _CONST char *s)
 {
-  return strtodf (s, NULL);
+    return strtodf (s, NULL);
 }

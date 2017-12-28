@@ -55,30 +55,30 @@ No supporting OS subroutines are required.
 
 div_t
 _DEFUN (div, (n, d),
-	int n _AND
-	int d)
+        int n _AND
+        int d)
 {
-  div_t res;
+    div_t res;
 
-  if (d)
+    if (d)
     {
-      res.quot = abs (n) / abs (d);
-      res.rem = abs (n) % abs (d);
+        res.quot = abs (n) / abs (d);
+        res.rem = abs (n) % abs (d);
 
-      if ((n < 0 && d > 0) || (n >= 0 && d < 0))
-	res.quot = -res.quot;
-      if (n < 0)
-	res.rem = -res.rem;
+        if ((n < 0 && d > 0) || (n >= 0 && d < 0))
+            res.quot = -res.quot;
+        if (n < 0)
+            res.rem = -res.rem;
     }
-  else
+    else
     {
-      if (n < 0)
-	res.quot = INT_MIN;
-      else
-	res.quot = INT_MAX;
+        if (n < 0)
+            res.quot = INT_MIN;
+        else
+            res.quot = INT_MAX;
 
-      res.rem = 0;
+        res.rem = 0;
     }
 
-  return res;
+    return res;
 }

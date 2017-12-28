@@ -39,5 +39,5 @@ No supporting OS subroutines are required.
 int
 _DEFUN(isdigit,(c),int c)
 {
-	return((_ctype_ + 1)[c] & _N);
+    return((_ctype_ + 1)[c] & _N);
 }

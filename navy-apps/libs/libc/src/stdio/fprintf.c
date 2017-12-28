@@ -25,13 +25,13 @@
 int
 fprintf (FILE * fp, const char *fmt,...)
 {
-  int ret;
-  va_list ap;
+    int ret;
+    va_list ap;
 
-  va_start (ap, fmt);
-  ret = vfprintf (fp, fmt, ap);
-  va_end (ap);
-  return ret;
+    va_start (ap, fmt);
+    ret = vfprintf (fp, fmt, ap);
+    va_end (ap);
+    return ret;
 }
 
 #else
@@ -40,17 +40,17 @@ fprintf (FILE * fp, const char *fmt,...)
 
 int
 fprintf (fp, fmt, va_alist)
-     FILE *fp;
-     char *fmt;
-     va_dcl
+FILE *fp;
+char *fmt;
+va_dcl
 {
-  int ret;
-  va_list ap;
+    int ret;
+    va_list ap;
 
-  va_start (ap);
-  ret = vfprintf (fp, fmt, ap);
-  va_end (ap);
-  return ret;
+    va_start (ap);
+    ret = vfprintf (fp, fmt, ap);
+    va_end (ap);
+    return ret;
 }
 
 #endif

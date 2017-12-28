@@ -6,7 +6,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -47,12 +47,12 @@
 
 #define	HUGE	((float)3.40282346638528860e+38)
 
-/* 
+/*
  * set X_TLOSS = pi*2**52, which is possibly defined in <values.h>
  * (one may replace the following line by "#include <values.h>")
  */
 
-#define X_TLOSS		1.41484755040568800000e+16 
+#define X_TLOSS		1.41484755040568800000e+16
 
 /* Functions that are not documented, and are not in <math.h>.  */
 
@@ -65,13 +65,13 @@ extern double scalb __P((double, double));
 extern double significand __P((double));
 
 /* ieee style elementary functions */
-extern double __ieee754_sqrt __P((double));			
-extern double __ieee754_acos __P((double));			
-extern double __ieee754_acosh __P((double));			
-extern double __ieee754_log __P((double));			
-extern double __ieee754_atanh __P((double));			
-extern double __ieee754_asin __P((double));			
-extern double __ieee754_atan2 __P((double,double));			
+extern double __ieee754_sqrt __P((double));
+extern double __ieee754_acos __P((double));
+extern double __ieee754_acosh __P((double));
+extern double __ieee754_log __P((double));
+extern double __ieee754_atanh __P((double));
+extern double __ieee754_asin __P((double));
+extern double __ieee754_atan2 __P((double,double));
 extern double __ieee754_exp __P((double));
 extern double __ieee754_cosh __P((double));
 extern double __ieee754_fmod __P((double,double));
@@ -112,13 +112,13 @@ extern float scalbf __P((float, float));
 extern float significandf __P((float));
 
 /* ieee style elementary float functions */
-extern float __ieee754_sqrtf __P((float));			
-extern float __ieee754_acosf __P((float));			
-extern float __ieee754_acoshf __P((float));			
-extern float __ieee754_logf __P((float));			
-extern float __ieee754_atanhf __P((float));			
-extern float __ieee754_asinf __P((float));			
-extern float __ieee754_atan2f __P((float,float));			
+extern float __ieee754_sqrtf __P((float));
+extern float __ieee754_acosf __P((float));
+extern float __ieee754_acoshf __P((float));
+extern float __ieee754_logf __P((float));
+extern float __ieee754_atanhf __P((float));
+extern float __ieee754_asinf __P((float));
+extern float __ieee754_atan2f __P((float,float));
 extern float __ieee754_expf __P((float));
 extern float __ieee754_coshf __P((float));
 extern float __ieee754_fmodf __P((float,float));
@@ -161,7 +161,7 @@ extern int   __kernel_rem_pio2f __P((float*,float*,int,int,int,const __int32_t*)
 
 #ifndef __IEEE_BIG_ENDIAN
 #ifndef __IEEE_LITTLE_ENDIAN
- #error Must define endianness
+#error Must define endianness
 #endif
 #endif
 
@@ -170,28 +170,28 @@ extern int   __kernel_rem_pio2f __P((float*,float*,int,int,int,const __int32_t*)
 
 #ifdef __IEEE_BIG_ENDIAN
 
-typedef union 
+typedef union
 {
-  double value;
-  struct 
-  {
-    __uint32_t msw;
-    __uint32_t lsw;
-  } parts;
+    double value;
+    struct
+    {
+        __uint32_t msw;
+        __uint32_t lsw;
+    } parts;
 } ieee_double_shape_type;
 
 #endif
 
 #ifdef __IEEE_LITTLE_ENDIAN
 
-typedef union 
+typedef union
 {
-  double value;
-  struct 
-  {
-    __uint32_t lsw;
-    __uint32_t msw;
-  } parts;
+    double value;
+    struct
+    {
+        __uint32_t lsw;
+        __uint32_t msw;
+    } parts;
 } ieee_double_shape_type;
 
 #endif
@@ -259,8 +259,8 @@ do {								\
 
 typedef union
 {
-  float value;
-  __uint32_t word;
+    float value;
+    __uint32_t word;
 } ieee_float_shape_type;
 
 /* Get a 32 bit int from a float.  */

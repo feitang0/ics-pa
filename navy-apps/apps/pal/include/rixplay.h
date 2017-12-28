@@ -32,25 +32,25 @@ extern "C"
 
 VOID
 RIX_FillBuffer(
-   LPBYTE     stream,
-   INT        len
+    LPBYTE     stream,
+    INT        len
 );
 
 INT
 RIX_Init(
-   LPCSTR     szFileName
+    LPCSTR     szFileName
 );
 
 VOID
 RIX_Shutdown(
-   VOID
+    VOID
 );
 
 VOID
 RIX_Play(
-   INT       iNumRIX,
-   BOOL      fLoop,
-   FLOAT     flFadeTime
+    INT       iNumRIX,
+    BOOL      fLoop,
+    FLOAT     flFadeTime
 );
 
 #ifdef __cplusplus

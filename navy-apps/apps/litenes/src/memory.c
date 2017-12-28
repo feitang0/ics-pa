@@ -6,11 +6,16 @@
 byte memory_readb(word address)
 {
     switch (address >> 13) {
-        case 0: return cpu_ram_read(address & 0x07FF);
-        case 1: return ppu_io_read(address);
-        case 2: return psg_io_read(address);
-        case 3: return cpu_ram_read(address & 0x1FFF);
-        default: return mmc_read(address);
+    case 0:
+        return cpu_ram_read(address & 0x07FF);
+    case 1:
+        return ppu_io_read(address);
+    case 2:
+        return psg_io_read(address);
+    case 3:
+        return cpu_ram_read(address & 0x1FFF);
+    default:
+        return mmc_read(address);
     }
 }
 
@@ -25,11 +30,16 @@ void memory_writeb(word address, byte data)
         return;
     }
     switch (address >> 13) {
-        case 0: return cpu_ram_write(address & 0x07FF, data);
-        case 1: return ppu_io_write(address, data);
-        case 2: return psg_io_write(address, data);
-        case 3: return cpu_ram_write(address & 0x1FFF, data);
-        default: return mmc_write(address, data);
+    case 0:
+        return cpu_ram_write(address & 0x07FF, data);
+    case 1:
+        return ppu_io_write(address, data);
+    case 2:
+        return psg_io_write(address, data);
+    case 3:
+        return cpu_ram_write(address & 0x1FFF, data);
+    default:
+        return mmc_write(address, data);
     }
 }
 

@@ -40,21 +40,21 @@ QUICKREF
 
 int
 _DEFUN (memcmp, (m1, m2, n),
-	_CONST _PTR m1 _AND
-	_CONST _PTR m2 _AND
-	size_t n)
+        _CONST _PTR m1 _AND
+        _CONST _PTR m2 _AND
+        size_t n)
 {
-  unsigned char *s1 = (unsigned char *) m1;
-  unsigned char *s2 = (unsigned char *) m2;
+    unsigned char *s1 = (unsigned char *) m1;
+    unsigned char *s2 = (unsigned char *) m2;
 
-  while (n--)
+    while (n--)
     {
-      if (*s1 != *s2)
-	{
-	  return *s1 - *s2;
-	}
-      s1++;
-      s2++;
+        if (*s1 != *s2)
+        {
+            return *s1 - *s2;
+        }
+        s1++;
+        s2++;
     }
-  return 0;
+    return 0;
 }

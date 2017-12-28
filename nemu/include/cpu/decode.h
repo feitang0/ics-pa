@@ -10,53 +10,53 @@ enum { OP_TYPE_REG, OP_TYPE_MEM, OP_TYPE_IMM };
 #define OP_STR_SIZE 40
 
 typedef struct {
-  uint32_t type;
-  int width;
-  union {
-    uint32_t reg;
-    rtlreg_t addr;
-    uint32_t imm;
-    int32_t simm;
-  };
-  rtlreg_t val;
-  char str[OP_STR_SIZE];
+    uint32_t type;
+    int width;
+    union {
+        uint32_t reg;
+        rtlreg_t addr;
+        uint32_t imm;
+        int32_t simm;
+    };
+    rtlreg_t val;
+    char str[OP_STR_SIZE];
 } Operand;
 
 typedef struct {
-  uint32_t opcode;
-  vaddr_t seq_eip;  // sequential eip
-  bool is_operand_size_16;
-  uint8_t ext_opcode;
-  bool is_jmp;
-  vaddr_t jmp_eip;
-  Operand src, dest, src2;
+    uint32_t opcode;
+    vaddr_t seq_eip;  // sequential eip
+    bool is_operand_size_16;
+    uint8_t ext_opcode;
+    bool is_jmp;
+    vaddr_t jmp_eip;
+    Operand src, dest, src2;
 #ifdef DEBUG
-  char assembly[80];
-  char asm_buf[128];
-  char *p;
+    char assembly[80];
+    char asm_buf[128];
+    char *p;
 #endif
 } DecodeInfo;
 
 typedef union {
-  struct {
-    uint8_t R_M		:3;
-    uint8_t reg		:3;
-    uint8_t mod		:2;
-  };
-  struct {
-    uint8_t dont_care	:3;
-    uint8_t opcode		:3;
-  };
-  uint8_t val;
+    struct {
+        uint8_t R_M		:3;
+        uint8_t reg		:3;
+        uint8_t mod		:2;
+    };
+    struct {
+        uint8_t dont_care	:3;
+        uint8_t opcode		:3;
+    };
+    uint8_t val;
 } ModR_M;
 
 typedef union {
-  struct {
-    uint8_t base	:3;
-    uint8_t index	:3;
-    uint8_t ss		:2;
-  };
-  uint8_t val;
+    struct {
+        uint8_t base	:3;
+        uint8_t index	:3;
+        uint8_t ss		:2;
+    };
+    uint8_t val;
 } SIB;
 
 void load_addr(vaddr_t *, ModR_M *, Operand *);

@@ -41,7 +41,7 @@ int fce_load_rom(char *rom)
     mmc_id = ((fce_rom_header->rom_type & 0xF0) >> 4);
 
     int prg_size = fce_rom_header->prg_block_count * 0x4000;
-    
+
     byte *blk = romread(prg_size);
 
     if (mmc_id == 0 || mmc_id == 3) {
@@ -84,13 +84,13 @@ static unsigned long gtime;
 
 void wait_for_frame() {
 #ifdef NOGUI
-  return;
+    return;
 #endif
-  unsigned long cur = _uptime();
-  while (cur - gtime < 1000 / FPS) {
-    cur = _uptime();
-  }
-  gtime = cur;
+    unsigned long cur = _uptime();
+    while (cur - gtime < 1000 / FPS) {
+        cur = _uptime();
+    }
+    gtime = cur;
 }
 
 void fce_run()
@@ -109,9 +109,9 @@ void fce_run()
 
         int key = _read_key();
         if (key != _KEY_NONE) {
-          int down = (key & 0x8000) != 0;
-          int code = key & ~0x8000;
-          key_state[code] = down;
+            int down = (key & 0x8000) != 0;
+            int code = key & ~0x8000;
+            key_state[code] = down;
         }
     }
 }
@@ -119,18 +119,18 @@ void fce_run()
 // Rendering
 
 static const uint32_t palette[64] = {
-  0x808080, 0x0000BB, 0x3700BF, 0x8400A6, 0xBB006A, 0xB7001E,
-  0xB30000, 0x912600, 0x7B2B00, 0x003E00, 0x00480D, 0x003C22,
-  0x002F66, 0x000000, 0x050505, 0x050505, 0xC8C8C8, 0x0059FF,
-  0x443CFF, 0xB733CC, 0xFF33AA, 0xFF375E, 0xFF371A, 0xD54B00,
-  0xC46200, 0x3C7B00, 0x1E8415, 0x009566, 0x0084C4, 0x111111,
-  0x090909, 0x090909, 0xFFFFFF, 0x0095FF, 0x6F84FF, 0xD56FFF,
-  0xFF77CC, 0xFF6F99, 0xFF7B59, 0xFF915F, 0xFFA233, 0xA6BF00,
-  0x51D96A, 0x4DD5AE, 0x00D9FF, 0x666666, 0x0D0D0D, 0x0D0D0D,
-  0xFFFFFF, 0x84BFFF, 0xBBBBFF, 0xD0BBFF, 0xFFBFEA, 0xFFBFCC,
-  0xFFC4B7, 0xFFCCAE, 0xFFD9A2, 0xCCE199, 0xAEEEB7, 0xAAF7EE,
-  0xB3EEFF, 0xDDDDDD, 0x111111, 0x111111
-}; 
+    0x808080, 0x0000BB, 0x3700BF, 0x8400A6, 0xBB006A, 0xB7001E,
+    0xB30000, 0x912600, 0x7B2B00, 0x003E00, 0x00480D, 0x003C22,
+    0x002F66, 0x000000, 0x050505, 0x050505, 0xC8C8C8, 0x0059FF,
+    0x443CFF, 0xB733CC, 0xFF33AA, 0xFF375E, 0xFF371A, 0xD54B00,
+    0xC46200, 0x3C7B00, 0x1E8415, 0x009566, 0x0084C4, 0x111111,
+    0x090909, 0x090909, 0xFFFFFF, 0x0095FF, 0x6F84FF, 0xD56FFF,
+    0xFF77CC, 0xFF6F99, 0xFF7B59, 0xFF915F, 0xFFA233, 0xA6BF00,
+    0x51D96A, 0x4DD5AE, 0x00D9FF, 0x666666, 0x0D0D0D, 0x0D0D0D,
+    0xFFFFFF, 0x84BFFF, 0xBBBBFF, 0xD0BBFF, 0xFFBFEA, 0xFFBFCC,
+    0xFFC4B7, 0xFFCCAE, 0xFFD9A2, 0xCCE199, 0xAEEEB7, 0xAAF7EE,
+    0xB3EEFF, 0xDDDDDD, 0x111111, 0x111111
+};
 
 byte canvas[257][520];
 
@@ -139,49 +139,49 @@ static uint32_t row[1024];
 
 void fce_update_screen()
 {
-  int idx = ppu_ram_read(0x3F00);
+    int idx = ppu_ram_read(0x3F00);
 
-  int w = _screen.width;
-  int h = _screen.height;
+    int w = _screen.width;
+    int h = _screen.height;
 
-  frame_cnt ++;
+    frame_cnt ++;
 #ifdef NOGUI
-  if (frame_cnt % 1000 == 0) printf("Frame %d (%d FPS)\n", frame_cnt, frame_cnt * 1000 / _uptime());
-  return;
+    if (frame_cnt % 1000 == 0) printf("Frame %d (%d FPS)\n", frame_cnt, frame_cnt * 1000 / _uptime());
+    return;
 #endif
-  if (frame_cnt % 3 != 0) return;
+    if (frame_cnt % 3 != 0) return;
 
-  int pad = (w - h) / 2;
-  for (int y = 0; y < h; y ++) {
-    int y1 = y * (H - 1) / h + 1;
-    for (int x = pad; x < w - pad; x ++) {
-      row[x] = palette[canvas[y1][xmap[x] + 0xff]];
+    int pad = (w - h) / 2;
+    for (int y = 0; y < h; y ++) {
+        int y1 = y * (H - 1) / h + 1;
+        for (int x = pad; x < w - pad; x ++) {
+            row[x] = palette[canvas[y1][xmap[x] + 0xff]];
+        }
+        _draw_rect(row + pad, pad, y, w - 2 * pad, 1);
     }
-    _draw_rect(row + pad, pad, y, w - 2 * pad, 1);
-  }
 
-  _draw_sync();
+    _draw_sync();
 
-  assert(sizeof(byte) == 1);
-  memset(canvas, idx, sizeof(canvas));
+    assert(sizeof(byte) == 1);
+    memset(canvas, idx, sizeof(canvas));
 }
 
 void xmap_init() {
-  int w = _screen.width;
-  int h = _screen.height;
-  int pad = (w - h) / 2;
-  for (int x = pad; x < w - pad; x ++) {
-    xmap[x] = (x - pad) * W / h;
-  }
+    int w = _screen.width;
+    int h = _screen.height;
+    int pad = (w - h) / 2;
+    for (int x = pad; x < w - pad; x ++) {
+        xmap[x] = (x - pad) * W / h;
+    }
 }
 
 int main() {
-  _ioe_init();
+    _ioe_init();
 
-  xmap_init();
-  fce_load_rom(rom_mario_nes);
-  fce_init();
-  fce_run();
-  return 1;
+    xmap_init();
+    fce_load_rom(rom_mario_nes);
+    fce_init();
+    fce_run();
+    return 1;
 }
 

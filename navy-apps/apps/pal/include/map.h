@@ -63,57 +63,57 @@ extern "C"
 
 typedef struct tagPALMAP
 {
-   DWORD          Tiles[128][64][2];
-   LPSPRITE       pTileSprite;
-   INT            iMapNum;
+    DWORD          Tiles[128][64][2];
+    LPSPRITE       pTileSprite;
+    INT            iMapNum;
 } PALMAP, *LPPALMAP;
 
 typedef const PALMAP *LPCPALMAP;
 
 LPPALMAP
 PAL_LoadMap(
-   INT               iMapNum,
-   FILE             *fpMapMKF,
-   FILE             *fpGopMKF
+    INT               iMapNum,
+    FILE             *fpMapMKF,
+    FILE             *fpGopMKF
 );
 
 VOID
 PAL_FreeMap(
-   LPPALMAP          lpMap
+    LPPALMAP          lpMap
 );
 
 LPCBITMAPRLE
 PAL_MapGetTileBitmap(
-   BYTE       x,
-   BYTE       y,
-   BYTE       h,
-   BYTE       ucLayer,
-   LPCPALMAP  lpMap
+    BYTE       x,
+    BYTE       y,
+    BYTE       h,
+    BYTE       ucLayer,
+    LPCPALMAP  lpMap
 );
 
 BOOL
 PAL_MapTileIsBlocked(
-   BYTE       x,
-   BYTE       y,
-   BYTE       h,
-   LPCPALMAP  lpMap
+    BYTE       x,
+    BYTE       y,
+    BYTE       h,
+    LPCPALMAP  lpMap
 );
 
 BYTE
 PAL_MapGetTileHeight(
-   BYTE       x,
-   BYTE       y,
-   BYTE       h,
-   BYTE       ucLayer,
-   LPCPALMAP  lpMap
+    BYTE       x,
+    BYTE       y,
+    BYTE       h,
+    BYTE       ucLayer,
+    LPCPALMAP  lpMap
 );
 
 VOID
 PAL_MapBlitToSurface(
-   LPCPALMAP             lpMap,
-   SDL_Surface          *lpSurface,
-   const SDL_Rect       *lpSrcRect,
-   BYTE                  ucLayer
+    LPCPALMAP             lpMap,
+    SDL_Surface          *lpSurface,
+    const SDL_Rect       *lpSrcRect,
+    BYTE                  ucLayer
 );
 
 //

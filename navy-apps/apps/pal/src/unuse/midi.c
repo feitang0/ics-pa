@@ -25,8 +25,8 @@
 
 VOID
 MIDI_Play(
-   INT       iNumRIX,
-   BOOL      fLoop
+    INT       iNumRIX,
+    BOOL      fLoop
 )
 /*++
   Purpose:
@@ -45,15 +45,15 @@ MIDI_Play(
 
 --*/
 {
-	return;
+    return;
 }
 
 VOID
 MIDI_CheckLoop(
-   VOID
+    VOID
 )
 {
-	return;
+    return;
 }
 
 #endif

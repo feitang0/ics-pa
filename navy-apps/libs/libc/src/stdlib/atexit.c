@@ -60,21 +60,21 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 
 int
 _DEFUN (atexit,
-	(fn),
-	_VOID _EXFUN ((*fn), (_VOID)))
+        (fn),
+        _VOID _EXFUN ((*fn), (_VOID)))
 {
-  register struct _atexit *p;
+    register struct _atexit *p;
 
-  if ((p = _REENT->_atexit) == NULL)
-    _REENT->_atexit = p = &_REENT->_atexit0;
-  if (p->_ind >= _ATEXIT_SIZE)
+    if ((p = _REENT->_atexit) == NULL)
+        _REENT->_atexit = p = &_REENT->_atexit0;
+    if (p->_ind >= _ATEXIT_SIZE)
     {
-      if ((p = (struct _atexit *) malloc (sizeof *p)) == NULL)
-	return -1;
-      p->_ind = 0;
-      p->_next = _REENT->_atexit;
-      _REENT->_atexit = p;
+        if ((p = (struct _atexit *) malloc (sizeof *p)) == NULL)
+            return -1;
+        p->_ind = 0;
+        p->_next = _REENT->_atexit;
+        _REENT->_atexit = p;
     }
-  p->_fns[p->_ind++] = fn;
-  return 0;
+    p->_fns[p->_ind++] = fn;
+    return 0;
 }

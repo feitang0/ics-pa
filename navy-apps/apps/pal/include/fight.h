@@ -29,89 +29,89 @@ extern "C"
 
 INT
 PAL_BattleSelectAutoTarget(
-   VOID
+    VOID
 );
 
 #ifndef PAL_CLASSIC
 
 VOID
 PAL_UpdateTimeChargingUnit(
-   VOID
+    VOID
 );
 
 FLOAT
 PAL_GetTimeChargingSpeed(
-   WORD           wDexterity
+    WORD           wDexterity
 );
 
 #endif
 
 VOID
 PAL_BattleUpdateFighters(
-   VOID
+    VOID
 );
 
 VOID
 PAL_BattlePlayerCheckReady(
-   VOID
+    VOID
 );
 
 VOID
 PAL_BattleStartFrame(
-   VOID
+    VOID
 );
 
 VOID
 PAL_BattleCommitAction(
-   BOOL         fRepeat
+    BOOL         fRepeat
 );
 
 VOID
 PAL_BattlePlayerPerformAction(
-   WORD         wPlayerIndex
+    WORD         wPlayerIndex
 );
 
 VOID
 PAL_BattleEnemyPerformAction(
-   WORD         wEnemyIndex
+    WORD         wEnemyIndex
 );
 
 #ifdef PAL_WIN95
 
 VOID
 PAL_BattleShowPlayerPreMagicAnim(
-   WORD         wPlayerIndex,
-   WORD         wObjectID
+    WORD         wPlayerIndex,
+    WORD         wObjectID
 );
 
 #else
 
 VOID
 PAL_BattleShowPlayerPreMagicAnim(
-   WORD         wPlayerIndex,
-   BOOL         fSummon
+    WORD         wPlayerIndex,
+    BOOL         fSummon
 );
 
 #endif
 
 VOID
 PAL_BattleDelay(
-   WORD       wDuration,
-   WORD       wObjectID,
-   BOOL       fUpdateGesture
+    WORD       wDuration,
+    WORD       wObjectID,
+    BOOL       fUpdateGesture
 );
 
 VOID
 PAL_BattleStealFromEnemy(
-   WORD           wTarget,
-   WORD           wStealRate
+    WORD           wTarget,
+    WORD           wStealRate
 );
 
 VOID
 PAL_BattleSimulateMagic(
-   SHORT      sTarget,
-   WORD       wMagicObjectID,
-   WORD       wBaseDamage
+    SHORT      sTarget,
+    WORD       wMagicObjectID,
+    WORD       wBaseDamage
 );
 
 #ifdef __cplusplus
