@@ -37,6 +37,9 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_help(char *args);
+static int cmd_si(char *args);
+static int cmd_info(char *args);
+static int cmd_x(char *args);
 
 static struct {
     char *name;
@@ -46,6 +49,9 @@ static struct {
     { "help", "Display informations about all supported commands", cmd_help },
     { "c", "Continue the execution of the program", cmd_c },
     { "q", "Exit NEMU", cmd_q },
+	{ "si", "Setp one instruction exactly", cmd_si },
+	{ "info", "List of integer registers and their contents", cmd_info },
+	{ "x", "Examine memory", cmd_x },
 
     /* TODO: Add more commands */
 
@@ -74,6 +80,81 @@ static int cmd_help(char *args) {
         printf("Unknown command '%s'\n", arg);
     }
     return 0;
+}
+
+static int cmd_si(char *args) {
+	int N;
+	char *arg = strtok(NULL, " ");
+	if (arg == NULL) {
+		N = 1;
+	} else {
+		N = atoi(arg);
+	}
+	if (N < 0) {
+		printf("N is invalid!\n");
+		return 0;
+	}
+	cpu_exec(N);
+	return 0;
+}
+
+static int cmd_info(char *args) {
+	char *arg = strtok(NULL, " ");
+	if (arg == NULL) {
+		printf("args are invalid!\n");
+		printf("Usage: info { r | w }\n");
+		return 0;
+	}
+
+	if (!strcmp(arg, "r")) {
+		for (int i = 0; i < 8; i++) {
+			printf("%s\t0x%x\t%u\n", regsl[i], cpu.gpr[i]._32, cpu.gpr[i]._32);
+		}
+		printf("%s\t0x%x\t%u\n", "eip", cpu.eip, cpu.eip);
+	}
+
+	return 0;
+}
+
+static int cmd_x(char *args) {
+	int LEN = 4;
+	char *arg = strtok(NULL, " ");
+	if (arg == NULL) {
+		printf("args are invalid!\n");
+		printf("Usage: x N EXPR\n");
+		return 0;
+	}
+	int N = atoi(arg);
+	if (N < 1) {
+		printf("N must bigger than 0!\n");
+		return 0;
+	}
+
+	arg = strtok(NULL, " ");
+	if (arg == NULL) {
+		printf("args are invalid!\n");
+		printf("Usage: x N EXPR\n");
+		return 0;
+	}
+	vaddr_t addr;
+	sscanf(arg, "%x", &addr);
+	if (addr < 0) {
+		printf("addr must bigger than or equal to 0x0!\n");
+		return 0;
+	}
+
+	for (int i = 0; i < N; i++) {
+		if (i % 4 == 0) {
+			printf("0x%x:", addr);
+		}
+		printf("\t0x%08x", vaddr_read(addr, LEN));
+		addr += LEN;
+		if ((i + 1) % 4 == 0 || i == N - 1) {
+			printf("\n");
+		}
+	}
+
+	return 0;
 }
 
 void ui_mainloop(int is_batch_mode) {
