@@ -48,14 +48,14 @@ extern "C" {
 #endif
 
 struct passwd {
-	char	*pw_name;		/* user name */
-	char	*pw_passwd;		/* encrypted password */
-	int	pw_uid;			/* user uid */
-	int	pw_gid;			/* user gid */
-	char	*pw_comment;		/* comment */
-	char	*pw_gecos;		/* Honeywell login info */
-	char	*pw_dir;		/* home directory */
-	char	*pw_shell;		/* default shell */
+    char	*pw_name;		/* user name */
+    char	*pw_passwd;		/* encrypted password */
+    int	pw_uid;			/* user uid */
+    int	pw_gid;			/* user gid */
+    char	*pw_comment;		/* comment */
+    char	*pw_gecos;		/* Honeywell login info */
+    char	*pw_dir;		/* home directory */
+    char	*pw_shell;		/* default shell */
 };
 
 struct passwd	*getpwuid (uid_t);

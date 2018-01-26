@@ -32,28 +32,28 @@ extern "C"
 
 INT
 PAL_InitFont(
-   VOID
+    VOID
 );
 
 VOID
 PAL_FreeFont(
-   VOID
+    VOID
 );
 
 VOID
 PAL_DrawCharOnSurface(
-   WORD                     wChar,
-   SDL_Surface             *lpSurface,
-   PAL_POS                  pos,
-   BYTE                     bColor
+    WORD                     wChar,
+    SDL_Surface             *lpSurface,
+    PAL_POS                  pos,
+    BYTE                     bColor
 );
 
 VOID
 PAL_DrawASCIICharOnSurface(
-   BYTE                     bChar,
-   SDL_Surface             *lpSurface,
-   PAL_POS                  pos,
-   BYTE                     bColor
+    BYTE                     bChar,
+    SDL_Surface             *lpSurface,
+    PAL_POS                  pos,
+    BYTE                     bColor
 );
 
 #ifdef __cplusplus

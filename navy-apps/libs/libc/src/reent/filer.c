@@ -27,7 +27,7 @@ int errno;
 /*
 FUNCTION
 	<<_open_r>>---Reentrant version of open
-	
+
 INDEX
 	_open_r
 
@@ -52,24 +52,24 @@ DESCRIPTION
 
 int
 _open_r (ptr, file, flags, mode)
-     struct _reent *ptr;
-     _CONST char *file;
-     int flags;
-     int mode;
+struct _reent *ptr;
+_CONST char *file;
+int flags;
+int mode;
 {
-  int ret;
+    int ret;
 
-  errno = 0;
-  ret = _open (file, flags, mode);
-  if (errno != 0)
-    ptr->_errno = errno;
-  return ret;
+    errno = 0;
+    ret = _open (file, flags, mode);
+    if (errno != 0)
+        ptr->_errno = errno;
+    return ret;
 }
 
 /*
 FUNCTION
 	<<_close_r>>---Reentrant version of close
-	
+
 INDEX
 	_close_r
 
@@ -91,22 +91,22 @@ DESCRIPTION
 
 int
 _close_r (ptr, fd)
-     struct _reent *ptr;
-     int fd;
+struct _reent *ptr;
+int fd;
 {
-  int ret;
+    int ret;
 
-  errno = 0;
-  ret = _close (fd);
-  if (errno != 0)
-    ptr->_errno = errno;
-  return ret;
+    errno = 0;
+    ret = _close (fd);
+    if (errno != 0)
+        ptr->_errno = errno;
+    return ret;
 }
 
 /*
 FUNCTION
 	<<_lseek_r>>---Reentrant version of lseek
-	
+
 INDEX
 	_lseek_r
 
@@ -131,24 +131,24 @@ DESCRIPTION
 
 off_t
 _lseek_r (ptr, fd, pos, whence)
-     struct _reent *ptr;
-     int fd;
-     off_t pos;
-     int whence;
+struct _reent *ptr;
+int fd;
+off_t pos;
+int whence;
 {
-  off_t ret;
+    off_t ret;
 
-  errno = 0;
-  ret = _lseek (fd, pos, whence);
-  if (errno != 0)
-    ptr->_errno = errno;
-  return ret;
+    errno = 0;
+    ret = _lseek (fd, pos, whence);
+    if (errno != 0)
+        ptr->_errno = errno;
+    return ret;
 }
 
 /*
 FUNCTION
 	<<_read_r>>---Reentrant version of read
-	
+
 INDEX
 	_read_r
 
@@ -173,24 +173,24 @@ DESCRIPTION
 
 long
 _read_r (ptr, fd, buf, cnt)
-     struct _reent *ptr;
-     int fd;
-     _PTR buf;
-     size_t cnt;
+struct _reent *ptr;
+int fd;
+_PTR buf;
+size_t cnt;
 {
-  long ret;
+    long ret;
 
-  errno = 0;
-  ret = _read (fd, buf, cnt);
-  if (errno != 0)
-    ptr->_errno = errno;
-  return ret;
+    errno = 0;
+    ret = _read (fd, buf, cnt);
+    if (errno != 0)
+        ptr->_errno = errno;
+    return ret;
 }
 
 /*
 FUNCTION
 	<<_write_r>>---Reentrant version of write
-	
+
 INDEX
 	_write_r
 
@@ -215,18 +215,18 @@ DESCRIPTION
 
 long
 _write_r (ptr, fd, buf, cnt)
-     struct _reent *ptr;
-     int fd;
-     _CONST _PTR buf;
-     size_t cnt;
+struct _reent *ptr;
+int fd;
+_CONST _PTR buf;
+size_t cnt;
 {
-  long ret;
+    long ret;
 
-  errno = 0;
-  ret = _write (fd, buf, cnt);
-  if (errno != 0)
-    ptr->_errno = errno;
-  return ret;
+    errno = 0;
+    ret = _write (fd, buf, cnt);
+    if (errno != 0)
+        ptr->_errno = errno;
+    return ret;
 }
 
 #endif /* ! defined (REENTRANT_SYSCALLS_PROVIDED) */

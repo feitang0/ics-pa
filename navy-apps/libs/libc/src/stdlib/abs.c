@@ -39,5 +39,5 @@ No supporting OS subroutines are required.
 int
 _DEFUN (abs, (i), int i)
 {
-  return (i < 0) ? -i : i;
+    return (i < 0) ? -i : i;
 }

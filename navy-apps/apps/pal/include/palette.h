@@ -31,52 +31,52 @@ extern "C"
 
 SDL_Color *
 PAL_GetPalette(
-   INT         iPaletteNum,
-   BOOL        fNight
+    INT         iPaletteNum,
+    BOOL        fNight
 );
 
 VOID
 PAL_SetPalette(
-   INT         iPaletteNum,
-   BOOL        fNight
+    INT         iPaletteNum,
+    BOOL        fNight
 );
 
 VOID
 PAL_FadeOut(
-   INT         iDelay
+    INT         iDelay
 );
 
 VOID
 PAL_FadeIn(
-   INT         iPaletteNum,
-   BOOL        fNight,
-   INT         iDelay
+    INT         iPaletteNum,
+    BOOL        fNight,
+    INT         iDelay
 );
 
 VOID
 PAL_SceneFade(
-   INT         iPaletteNum,
-   BOOL        fNight,
-   INT         iStep
+    INT         iPaletteNum,
+    BOOL        fNight,
+    INT         iStep
 );
 
 VOID
 PAL_PaletteFade(
-   INT         iPaletteNum,
-   BOOL        fNight,
-   INT         iDelay
+    INT         iPaletteNum,
+    BOOL        fNight,
+    INT         iDelay
 );
 
 VOID
 PAL_ColorFade(
-   INT        iDelay,
-   BYTE       bColor,
-   BOOL       fFrom
+    INT        iDelay,
+    BYTE       bColor,
+    BOOL       fFrom
 );
 
 VOID
 PAL_FadeToRed(
-   VOID
+    VOID
 );
 
 #ifdef __cplusplus

@@ -29,7 +29,7 @@
 
 VOID
 PAL_GameMain(
-   VOID
+    VOID
 );
 
 #endif

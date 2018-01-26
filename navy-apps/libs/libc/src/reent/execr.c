@@ -29,7 +29,7 @@ int errno;
 /*
 FUNCTION
 	<<_fork_r>>---Reentrant version of fork
-	
+
 INDEX
 	_fork_r
 
@@ -50,21 +50,21 @@ DESCRIPTION
 
 int
 _fork_r (ptr)
-     struct _reent *ptr;
+struct _reent *ptr;
 {
-  int ret;
+    int ret;
 
-  errno = 0;
-  ret = _fork ();
-  if (errno != 0)
-    ptr->_errno = errno;
-  return ret;
+    errno = 0;
+    ret = _fork ();
+    if (errno != 0)
+        ptr->_errno = errno;
+    return ret;
 }
 
 /*
 FUNCTION
 	<<_wait_r>>---Reentrant version of wait
-	
+
 INDEX
 	_wait_r
 
@@ -86,16 +86,16 @@ DESCRIPTION
 
 int
 _wait_r (ptr, status)
-     struct _reent *ptr;
-     int *status;
+struct _reent *ptr;
+int *status;
 {
-  int ret;
+    int ret;
 
-  errno = 0;
-  ret = _wait (status);
-  if (errno != 0)
-    ptr->_errno = errno;
-  return ret;
+    errno = 0;
+    ret = _wait (status);
+    if (errno != 0)
+        ptr->_errno = errno;
+    return ret;
 }
 
 #endif /* ! defined (REENTRANT_SYSCALLS_PROVIDED) */

@@ -44,8 +44,8 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 
 int
 _DEFUN (fputc, (ch, file),
-	int ch _AND
-	FILE * file)
+        int ch _AND
+        FILE * file)
 {
-  return putc (ch, file);
+    return putc (ch, file);
 }

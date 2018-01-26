@@ -34,61 +34,61 @@ extern "C"
 
 void
 trim(
-   char *str
+    char *str
 );
 
 char *va(
-   const char *format,
-   ...
+    const char *format,
+    ...
 );
 
 int
 RandomLong(
-   int from,
-   int to
+    int from,
+    int to
 );
 
 FLOAT
 RandomFloat(
-   FLOAT from,
-   FLOAT to
+    FLOAT from,
+    FLOAT to
 );
 
 void
 UTIL_Delay(
-   unsigned int ms
+    unsigned int ms
 );
 
 void
 TerminateOnError(
-   const char *fmt,
-   ...
+    const char *fmt,
+    ...
 );
 
 void *
 UTIL_malloc(
-   size_t               buffer_size
+    size_t               buffer_size
 );
 
 void *
 UTIL_calloc(
-   size_t               n,
-   size_t               size
+    size_t               n,
+    size_t               size
 );
 
 FILE *
 UTIL_OpenRequiredFile(
-   LPCSTR               lpszFileName
+    LPCSTR               lpszFileName
 );
 
 FILE *
 UTIL_OpenFile(
-   LPCSTR               lpszFileName
+    LPCSTR               lpszFileName
 );
 
 VOID
 UTIL_CloseFile(
-   FILE                *fp
+    FILE                *fp
 );
 
 #define _PATH_LOG           PAL_PREFIX "log.txt"
@@ -106,19 +106,19 @@ UTIL_CloseFile(
 
 FILE *
 UTIL_OpenLog(
-   VOID
+    VOID
 );
 
 VOID
 UTIL_CloseLog(
-   VOID
+    VOID
 );
 
 VOID
 UTIL_WriteLog(
-   int             Priority,
-   const char     *Fmt,
-   ...
+    int             Priority,
+    const char     *Fmt,
+    ...
 );
 
 #else

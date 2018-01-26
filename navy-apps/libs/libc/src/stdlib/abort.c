@@ -52,10 +52,10 @@ Supporting OS subroutines required: <<getpid>>, <<kill>>.
 _VOID
 _DEFUN_VOID (abort)
 {
-  while (1)
+    while (1)
     {
-      raise (SIGABRT);
-      _exit (1);
+        raise (SIGABRT);
+        _exit (1);
     }
 }
 

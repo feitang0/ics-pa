@@ -28,8 +28,8 @@
 
 int
 vprintf (fmt, ap)
-     char _CONST *fmt;
-     va_list ap;
+char _CONST *fmt;
+va_list ap;
 {
-  return vfprintf (stdout, fmt, ap);
+    return vfprintf (stdout, fmt, ap);
 }

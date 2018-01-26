@@ -52,9 +52,9 @@ extern char   *optarg;
 
 int
 getopt(
-   int             nargc,
-   char * const   *nargv,
-   const char     *ostr
+    int             nargc,
+    char * const   *nargv,
+    const char     *ostr
 );
 
 #ifdef __cplusplus

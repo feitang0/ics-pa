@@ -50,12 +50,12 @@ No supporting OS subroutines are required.
 
 int
 _DEFUN (fgetpos, (fp, pos),
-	FILE * fp _AND
-	fpos_t * pos)
+        FILE * fp _AND
+        fpos_t * pos)
 {
-  *pos = ftell (fp);
+    *pos = ftell (fp);
 
-  if (*pos != -1)
-    return 0;
-  return 1;
+    if (*pos != -1)
+        return 0;
+    return 1;
 }

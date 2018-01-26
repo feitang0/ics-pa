@@ -6,7 +6,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -38,7 +38,7 @@ TRAD_SYNOPSIS
 
 
 DESCRIPTION
-<<ldexp>> calculates the value 
+<<ldexp>> calculates the value
 @ifinfo
 <[val]> times 2 to the power <[exp]>.
 @end ifinfo
@@ -57,8 +57,8 @@ On overflow, <<ldexp>> returns plus or minus <<HUGE_VAL>>.
 
 PORTABILITY
 <<ldexp>> is ANSI, <<ldexpf>> is an extension.
-              
-*/   
+
+*/
 
 #include "fdlibm.h"
 #include <errno.h>
@@ -70,19 +70,20 @@ PORTABILITY
 #if defined (_LIBM_REENT) || ! defined (_REENT_ONLY)
 
 #ifdef __STDC__
-	double ldexp(_R1 double value, int exp)
+double ldexp(_R1 double value, int exp)
 #else
-	double ldexp(_R2 value, exp)
-	_R3 double value; int exp;
+double ldexp(_R2 value, exp)
+_R3 double value;
+int exp;
 #endif
 {
 #ifndef _DOUBLE_IS_32BITS
-	if(!finite(value)||value==0.0) return value;
-	value = scalbn(value,exp);
-	if(!finite(value)||value==0.0) _R4->_errno = ERANGE;
-	return value;
+    if(!finite(value)||value==0.0) return value;
+    value = scalbn(value,exp);
+    if(!finite(value)||value==0.0) _R4->_errno = ERANGE;
+    return value;
 #else /* defined (_DOUBLE_IS_32BITS) */
-	return (double) _ldexpf_r (_R4, (float) value, exp);
+    return (double) _ldexpf_r (_R4, (float) value, exp);
 #endif /* defined (_DOUBLE_IS_32BITS) */
 }
 

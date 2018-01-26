@@ -36,8 +36,8 @@ No supporting OS subroutines are required.
 
 #undef isascii
 
-int 
+int
 _DEFUN(isascii,(c),int c)
 {
-	return c >= 0 && c< 128;
+    return c >= 0 && c< 128;
 }

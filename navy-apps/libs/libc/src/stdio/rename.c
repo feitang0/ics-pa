@@ -11,7 +11,7 @@ ANSI_SYNOPSIS
 	#include <stdio.h>
 	int rename(const char *<[old]>, const char *<[new]>);
 
-	int _rename_r(void *<[reent]>, 
+	int _rename_r(void *<[reent]>,
                       const char *<[old]>, const char *<[new]>);
 
 TRAD_SYNOPSIS
@@ -54,30 +54,30 @@ Supporting OS subroutines required: <<link>>, <<unlink>>.
 
 int
 _rename_r (ptr, old, new)
-     struct _reent *ptr;
-     _CONST char *old;
-     _CONST char *new;
+struct _reent *ptr;
+_CONST char *old;
+_CONST char *new;
 {
-  if (_link_r (ptr, old, new) == -1)
-    return -1;
+    if (_link_r (ptr, old, new) == -1)
+        return -1;
 
-  if (_unlink_r (ptr, old) == -1)
+    if (_unlink_r (ptr, old) == -1)
     {
-      /* ??? Should we unlink new? (rhetorical question) */
-      return -1;
+        /* ??? Should we unlink new? (rhetorical question) */
+        return -1;
     }
 
-  return 0;
+    return 0;
 }
 
 #ifndef _REENT_ONLY
 
 int
 rename (old, new)
-     _CONST char *old;
-     _CONST char *new;
+_CONST char *old;
+_CONST char *new;
 {
-  return _rename_r (_REENT, old, new);
+    return _rename_r (_REENT, old, new);
 }
 
 #endif

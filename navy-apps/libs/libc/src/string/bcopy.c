@@ -30,9 +30,9 @@ QUICKREF
 
 void
 _DEFUN (bcopy, (b1, b2, length),
-	_CONST char *b1 _AND
-	char *b2 _AND
-	size_t length)
+        _CONST char *b1 _AND
+        char *b2 _AND
+        size_t length)
 {
-  memmove ((_PTR) b2, (_PTR) b1, length);
+    memmove ((_PTR) b2, (_PTR) b1, length);
 }

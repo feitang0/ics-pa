@@ -19,24 +19,24 @@ extern "C" {
 #define enumdef(k) NDL_SCANCODE_##k,
 
 enum NDL_ScanCode {
-  NDL_SCANCODE_NONE = 0,
-  _KEYS(enumdef)
+    NDL_SCANCODE_NONE = 0,
+    _KEYS(enumdef)
 };
 
 enum NDL_EventType {
-  NDL_EVENT_KEYDOWN,
-  NDL_EVENT_KEYUP,
-  NDL_EVENT_TIMER,
+    NDL_EVENT_KEYDOWN,
+    NDL_EVENT_KEYUP,
+    NDL_EVENT_TIMER,
 };
 
 typedef struct NDL_Event {
-  enum NDL_EventType type; 
-  int32_t data;
+    enum NDL_EventType type;
+    int32_t data;
 } NDL_Event;
 
 typedef struct NDL_Bitmap {
-  int w, h;
-  uint32_t *pixels;
+    int w, h;
+    uint32_t *pixels;
 } NDL_Bitmap;
 
 int NDL_OpenDisplay(int w, int h);

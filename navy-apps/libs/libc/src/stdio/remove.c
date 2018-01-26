@@ -48,22 +48,22 @@ Supporting OS subroutine required: <<unlink>>.
 
 int
 _remove_r (ptr, filename)
-     struct _reent *ptr;
-     _CONST char *filename;
+struct _reent *ptr;
+_CONST char *filename;
 {
-  if (_unlink_r (ptr, filename) == -1)
-    return -1;
+    if (_unlink_r (ptr, filename) == -1)
+        return -1;
 
-  return 0;
+    return 0;
 }
 
 #ifndef _REENT_ONLY
 
 int
 remove (filename)
-     _CONST char *filename;
+_CONST char *filename;
 {
-  return _remove_r (_REENT, filename);
+    return _remove_r (_REENT, filename);
 }
 
 #endif

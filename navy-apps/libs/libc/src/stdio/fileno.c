@@ -33,8 +33,8 @@ Supporting OS subroutines required: none.
 
 int
 _DEFUN (fileno, (f),
-	FILE * f)
+        FILE * f)
 {
-  CHECK_INIT (f);
-  return __sfileno (f);
+    CHECK_INIT (f);
+    return __sfileno (f);
 }

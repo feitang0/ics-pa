@@ -38,13 +38,13 @@ No supporting OS subroutines are required.
 int
 _DEFUN(toascii,(c),int c)
 {
-  return (c)&0177;
+    return (c)&0177;
 }
 
 
 int
 _DEFUN(_toascii,(c),int c)
 {
-  return (c)&0177;
+    return (c)&0177;
 }
 

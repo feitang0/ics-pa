@@ -1,4 +1,4 @@
-/* unified sys/types.h: 
+/* unified sys/types.h:
    start with sef's sysvi386 version.
    merge go32 version -- a few ifdefs.
    h8300hms, h8300xray, and sysvnecv70 disagree on the following types:
@@ -10,8 +10,8 @@
    typedef int mode_t;
    typedef int caddr_t;
 
-   however, these aren't "reasonable" values, the sysvi386 ones make far 
-   more sense, and should work sufficiently well (in particular, h8300 
+   however, these aren't "reasonable" values, the sysvi386 ones make far
+   more sense, and should work sufficiently well (in particular, h8300
    doesn't have a stat, and the necv70 doesn't matter.) -- eichin
  */
 
@@ -24,7 +24,7 @@
 #endif
 #endif
 
-# include <stddef.h>	
+# include <stddef.h>
 # include <machine/types.h>
 
 # ifndef	_POSIX_SOURCE
@@ -93,7 +93,7 @@ typedef	long	fd_mask;
 #  endif
 
 typedef	struct fd_set {
-	fd_mask	fds_bits[howmany(FD_SETSIZE, NFDBITS)];
+    fd_mask	fds_bits[howmany(FD_SETSIZE, NFDBITS)];
 } fd_set;
 
 

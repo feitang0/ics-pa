@@ -53,13 +53,13 @@ static char sccsid[] = "%W% (Berkeley) %G%";
 
 void
 _DEFUN (rewind, (fp),
-	register FILE * fp)
+        register FILE * fp)
 {
-  (void) fflush (fp);
-  clearerr (fp);
-  if (fp->_seek == NULL)
-    return;			/* ??? */
-  fp->_r = 0;
-  fp->_p = fp->_bf._base;
-  (void) (*fp->_seek) (fp->_cookie, (fpos_t) 0, SEEK_SET);
+    (void) fflush (fp);
+    clearerr (fp);
+    if (fp->_seek == NULL)
+        return;			/* ??? */
+    fp->_r = 0;
+    fp->_p = fp->_bf._base;
+    (void) (*fp->_seek) (fp->_cookie, (fpos_t) 0, SEEK_SET);
 }

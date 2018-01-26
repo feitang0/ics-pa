@@ -43,17 +43,17 @@ Supporting OS subroutine required: Some implementations require
 
 time_t
 _DEFUN (time, (t),
-	time_t * t)
+        time_t * t)
 {
-  struct timeval now;
+    struct timeval now;
 
-  if (_gettimeofday_r (_REENT, &now, (struct timezone *) 0) >= 0)
+    if (_gettimeofday_r (_REENT, &now, (struct timezone *) 0) >= 0)
     {
-      if (t)
-	*t = now.tv_sec;
-      return now.tv_sec;
+        if (t)
+            *t = now.tv_sec;
+        return now.tv_sec;
     }
-  return -1;
+    return -1;
 }
 
 #endif

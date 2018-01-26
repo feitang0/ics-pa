@@ -8,7 +8,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -16,9 +16,9 @@
 #include "fdlibm.h"
 
 #ifdef __STDC__
-static const float 
+static const float
 #else
-static float 
+static float
 #endif
 one =  1.0000000000e+00, /* 0x3F800000 */
 pi =  3.1415925026e+00, /* 0x40490fda */
@@ -36,49 +36,49 @@ qS3 = -6.8828397989e-01, /* 0xbf303361 */
 qS4 =  7.7038154006e-02; /* 0x3d9dc62e */
 
 #ifdef __STDC__
-	float __ieee754_acosf(float x)
+float __ieee754_acosf(float x)
 #else
-	float __ieee754_acosf(x)
-	float x;
+float __ieee754_acosf(x)
+float x;
 #endif
 {
-	float z,p,q,r,w,s,c,df;
-	__int32_t hx,ix;
-	GET_FLOAT_WORD(hx,x);
-	ix = hx&0x7fffffff;
-	if(ix==0x3f800000) {		/* |x|==1 */
-	    if(hx>0) return 0.0;	/* acos(1) = 0  */
-	    else return pi+(float)2.0*pio2_lo;	/* acos(-1)= pi */
-	} else if(ix>0x3f800000) {	/* |x| >= 1 */
-	    return (x-x)/(x-x);		/* acos(|x|>1) is NaN */
-	}
-	if(ix<0x3f000000) {	/* |x| < 0.5 */
-	    if(ix<=0x23000000) return pio2_hi+pio2_lo;/*if|x|<2**-57*/
-	    z = x*x;
-	    p = z*(pS0+z*(pS1+z*(pS2+z*(pS3+z*(pS4+z*pS5)))));
-	    q = one+z*(qS1+z*(qS2+z*(qS3+z*qS4)));
-	    r = p/q;
-	    return pio2_hi - (x - (pio2_lo-x*r));
-	} else  if (hx<0) {		/* x < -0.5 */
-	    z = (one+x)*(float)0.5;
-	    p = z*(pS0+z*(pS1+z*(pS2+z*(pS3+z*(pS4+z*pS5)))));
-	    q = one+z*(qS1+z*(qS2+z*(qS3+z*qS4)));
-	    s = __ieee754_sqrtf(z);
-	    r = p/q;
-	    w = r*s-pio2_lo;
-	    return pi - (float)2.0*(s+w);
-	} else {			/* x > 0.5 */
-	    __int32_t idf;
-	    z = (one-x)*(float)0.5;
-	    s = __ieee754_sqrtf(z);
-	    df = s;
-	    GET_FLOAT_WORD(idf,df);
-	    SET_FLOAT_WORD(df,idf&0xfffff000);
-	    c  = (z-df*df)/(s+df);
-	    p = z*(pS0+z*(pS1+z*(pS2+z*(pS3+z*(pS4+z*pS5)))));
-	    q = one+z*(qS1+z*(qS2+z*(qS3+z*qS4)));
-	    r = p/q;
-	    w = r*s+c;
-	    return (float)2.0*(df+w);
-	}
+    float z,p,q,r,w,s,c,df;
+    __int32_t hx,ix;
+    GET_FLOAT_WORD(hx,x);
+    ix = hx&0x7fffffff;
+    if(ix==0x3f800000) {		/* |x|==1 */
+        if(hx>0) return 0.0;	/* acos(1) = 0  */
+        else return pi+(float)2.0*pio2_lo;	/* acos(-1)= pi */
+    } else if(ix>0x3f800000) {	/* |x| >= 1 */
+        return (x-x)/(x-x);		/* acos(|x|>1) is NaN */
+    }
+    if(ix<0x3f000000) {	/* |x| < 0.5 */
+        if(ix<=0x23000000) return pio2_hi+pio2_lo;/*if|x|<2**-57*/
+        z = x*x;
+        p = z*(pS0+z*(pS1+z*(pS2+z*(pS3+z*(pS4+z*pS5)))));
+        q = one+z*(qS1+z*(qS2+z*(qS3+z*qS4)));
+        r = p/q;
+        return pio2_hi - (x - (pio2_lo-x*r));
+    } else  if (hx<0) {		/* x < -0.5 */
+        z = (one+x)*(float)0.5;
+        p = z*(pS0+z*(pS1+z*(pS2+z*(pS3+z*(pS4+z*pS5)))));
+        q = one+z*(qS1+z*(qS2+z*(qS3+z*qS4)));
+        s = __ieee754_sqrtf(z);
+        r = p/q;
+        w = r*s-pio2_lo;
+        return pi - (float)2.0*(s+w);
+    } else {			/* x > 0.5 */
+        __int32_t idf;
+        z = (one-x)*(float)0.5;
+        s = __ieee754_sqrtf(z);
+        df = s;
+        GET_FLOAT_WORD(idf,df);
+        SET_FLOAT_WORD(df,idf&0xfffff000);
+        c  = (z-df*df)/(s+df);
+        p = z*(pS0+z*(pS1+z*(pS2+z*(pS3+z*(pS4+z*pS5)))));
+        q = one+z*(qS1+z*(qS2+z*(qS3+z*qS4)));
+        r = p/q;
+        w = r*s+c;
+        return (float)2.0*(df+w);
+    }
 }

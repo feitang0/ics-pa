@@ -51,30 +51,30 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 
 void
 _DEFUN (_perror_r, (ptr, s),
-	struct _reent *ptr _AND
-	_CONST char *s)
+        struct _reent *ptr _AND
+        _CONST char *s)
 {
-  char *error;
+    char *error;
 
-  if (s != NULL && *s != '\0')
+    if (s != NULL && *s != '\0')
     {
-      fputs (s, _stderr_r (ptr));
-      fputs (": ", _stderr_r (ptr));
+        fputs (s, _stderr_r (ptr));
+        fputs (": ", _stderr_r (ptr));
     }
 
-  if ((error = strerror (ptr->_errno)) != NULL)
-    fputs (error, _stderr_r (ptr));
+    if ((error = strerror (ptr->_errno)) != NULL)
+        fputs (error, _stderr_r (ptr));
 
-  fputc ('\n', _stderr_r (ptr));
+    fputc ('\n', _stderr_r (ptr));
 }
 
 #ifndef _REENT_ONLY
 
 void
 _DEFUN (perror, (s),
-	_CONST char *s)
+        _CONST char *s)
 {
-  _perror_r (_REENT, s);
+    _perror_r (_REENT, s);
 }
 
 #endif

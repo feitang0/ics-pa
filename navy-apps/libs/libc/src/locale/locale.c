@@ -56,7 +56,7 @@ in the <[category]> argument.
 
 <<localeconv>> returns a pointer to a structure (also defined in
 `<<locale.h>>') describing the locale-specific conventions currently
-in effect.  
+in effect.
 
 <<_localeconv_r>> and <<_setlocale_r>> are reentrant versions of
 <<localeconv>> and <<setlocale>> respectively.  The extra argument
@@ -88,11 +88,11 @@ No supporting OS subroutines are required.
 #include <limits.h>
 #include <reent.h>
 
-static _CONST struct lconv lconv = 
+static _CONST struct lconv lconv =
 {
-  ".", "", "", "", "", "", "", "", "", "",
-  CHAR_MAX, CHAR_MAX, CHAR_MAX, CHAR_MAX,
-  CHAR_MAX, CHAR_MAX, CHAR_MAX, CHAR_MAX,
+    ".", "", "", "", "", "", "", "", "", "",
+    CHAR_MAX, CHAR_MAX, CHAR_MAX, CHAR_MAX,
+    CHAR_MAX, CHAR_MAX, CHAR_MAX, CHAR_MAX,
 };
 
 
@@ -102,22 +102,22 @@ _DEFUN(_setlocale_r, (p, category, locale),
        int category _AND
        _CONST char *locale)
 {
-  if (locale && strcmp (locale, "C") && strcmp (locale, ""))
-   return 0;
+    if (locale && strcmp (locale, "C") && strcmp (locale, ""))
+        return 0;
 
-  p->_current_category = category;
-  
-  p->_current_locale = locale;
-  
-  return "C";
+    p->_current_category = category;
+
+    p->_current_locale = locale;
+
+    return "C";
 }
 
 
 struct lconv *
-_DEFUN(_localeconv_r, (data), 
-      struct _reent *data)
+_DEFUN(_localeconv_r, (data),
+       struct _reent *data)
 {
-  return (struct lconv *) &lconv;
+    return (struct lconv *) &lconv;
 }
 
 #ifndef _REENT_ONLY
@@ -127,14 +127,14 @@ _DEFUN(setlocale, (category, locale),
        int category _AND
        _CONST char *locale)
 {
-  return _setlocale_r (_REENT, category, locale);
+    return _setlocale_r (_REENT, category, locale);
 }
 
 
 struct lconv *
 _DEFUN_VOID(localeconv)
 {
-  return _localeconv_r (_REENT);
+    return _localeconv_r (_REENT);
 }
 
 #endif

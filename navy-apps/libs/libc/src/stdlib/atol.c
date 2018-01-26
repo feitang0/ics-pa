@@ -30,7 +30,7 @@ No supporting OS subroutines are required.
 
 long
 _DEFUN (atol, (s),
-  _CONST char *s)
+        _CONST char *s)
 {
-  return strtol (s, NULL, 10);
+    return strtol (s, NULL, 10);
 }

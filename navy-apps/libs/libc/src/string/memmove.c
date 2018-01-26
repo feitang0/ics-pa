@@ -40,30 +40,30 @@ QUICKREF
 /*SUPPRESS 20*/
 _PTR
 _DEFUN (memmove, (dst_void, src_void, length),
-	_PTR dst_void _AND
-	_CONST _PTR src_void _AND
-	size_t length)
+        _PTR dst_void _AND
+        _CONST _PTR src_void _AND
+        size_t length)
 {
-  char *dst = dst_void;
-  _CONST char *src = src_void;
+    char *dst = dst_void;
+    _CONST char *src = src_void;
 
-  if (src < dst && dst < src + length)
+    if (src < dst && dst < src + length)
     {
-      /* Have to copy backwards */
-      src += length;
-      dst += length;
-      while (length--)
-	{
-	  *--dst = *--src;
-	}
+        /* Have to copy backwards */
+        src += length;
+        dst += length;
+        while (length--)
+        {
+            *--dst = *--src;
+        }
     }
-  else
+    else
     {
-      while (length--)
-	{
-	  *dst++ = *src++;
-	}
+        while (length--)
+        {
+            *dst++ = *src++;
+        }
     }
 
-  return dst_void;
+    return dst_void;
 }

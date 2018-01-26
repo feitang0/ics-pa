@@ -72,15 +72,15 @@ typedef uint32_t PDE;
 
 // Gate descriptors for interrupts and traps
 typedef struct GateDesc {
-  uint32_t off_15_0 : 16;   // Low 16 bits of offset in segment
-  uint32_t cs : 16;     // Code segment selector
-  uint32_t args : 5;    // # args, 0 for interrupt/trap gates
-  uint32_t rsv1 : 3;    // Reserved(should be zero I guess)
-  uint32_t type : 4;    // Type(STS_{TG,IG32,TG32})
-  uint32_t s : 1;       // Must be 0 (system)
-  uint32_t dpl : 2;     // Descriptor(meaning new) privilege level
-  uint32_t p : 1;       // Present
-  uint32_t off_31_16 : 16;  // High bits of offset in segment
+    uint32_t off_15_0 : 16;   // Low 16 bits of offset in segment
+    uint32_t cs : 16;     // Code segment selector
+    uint32_t args : 5;    // # args, 0 for interrupt/trap gates
+    uint32_t rsv1 : 3;    // Reserved(should be zero I guess)
+    uint32_t type : 4;    // Type(STS_{TG,IG32,TG32})
+    uint32_t s : 1;       // Must be 0 (system)
+    uint32_t dpl : 2;     // Descriptor(meaning new) privilege level
+    uint32_t p : 1;       // Present
+    uint32_t off_31_16 : 16;  // High bits of offset in segment
 } GateDesc;
 
 #define GATE(type, cs, entry, dpl) (GateDesc)         \
@@ -88,46 +88,46 @@ typedef struct GateDesc {
   1, (uint32_t)(entry) >> 16 }
 
 static inline uint32_t get_cr0(void) {
-  volatile uint32_t val;
-  asm volatile("movl %%cr0, %0" : "=r"(val));
-  return val;
+    volatile uint32_t val;
+    asm volatile("movl %%cr0, %0" : "=r"(val));
+    return val;
 }
 
 static inline void set_cr0(uint32_t cr0) {
-  asm volatile("movl %0, %%cr0" : : "r"(cr0));
+    asm volatile("movl %0, %%cr0" : : "r"(cr0));
 }
 
 
 static inline void set_idt(GateDesc *idt, int size) {
-  volatile static uint16_t data[3];
-  data[0] = size - 1;
-  data[1] = (uint32_t)idt;
-  data[2] = (uint32_t)idt >> 16;
-  asm volatile("lidt (%0)" : : "r"(data));
+    volatile static uint16_t data[3];
+    data[0] = size - 1;
+    data[1] = (uint32_t)idt;
+    data[2] = (uint32_t)idt >> 16;
+    asm volatile("lidt (%0)" : : "r"(data));
 }
 
 static inline void set_cr3(void *pdir) {
-  asm volatile("movl %0, %%cr3" : : "r"(pdir));
+    asm volatile("movl %0, %%cr3" : : "r"(pdir));
 }
 
 static inline uint8_t inb(int port) {
-  char data;
-  asm volatile("inb %1, %0" : "=a"(data) : "d"((uint16_t)port));
-  return data;
+    char data;
+    asm volatile("inb %1, %0" : "=a"(data) : "d"((uint16_t)port));
+    return data;
 }
 
 static inline uint32_t inl(int port) {
-  long data;
-  asm volatile("inl %1, %0" : "=a"(data) : "d"((uint16_t)port));
-  return data;
+    long data;
+    asm volatile("inl %1, %0" : "=a"(data) : "d"((uint16_t)port));
+    return data;
 }
 
 static inline void outb(int port, uint8_t data) {
-  asm volatile("outb %%al, %%dx" : : "a"(data), "d"((uint16_t)port));
+    asm volatile("outb %%al, %%dx" : : "a"(data), "d"((uint16_t)port));
 }
 
 static inline void outl(int port, uint32_t data) {
-  asm volatile("outl %%eax, %%dx" : : "a"(data), "d"((uint16_t)port));
+    asm volatile("outl %%eax, %%dx" : : "a"(data), "d"((uint16_t)port));
 }
 
 #endif

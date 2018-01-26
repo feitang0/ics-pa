@@ -13,25 +13,25 @@ uint32_t loader(_Protect *, const char *);
 
 int main() {
 #ifdef HAS_PTE
-  init_mm();
+    init_mm();
 #endif
 
-  Log("'Hello World!' from Nanos-lite");
-  Log("Build time: %s, %s", __TIME__, __DATE__);
+    Log("'Hello World!' from Nanos-lite");
+    Log("Build time: %s, %s", __TIME__, __DATE__);
 
-  init_ramdisk();
+    init_ramdisk();
 
-  init_device();
+    init_device();
 
 #ifdef HAS_ASYE
-  Log("Initializing interrupt/exception handler...");
-  init_irq();
+    Log("Initializing interrupt/exception handler...");
+    init_irq();
 #endif
 
-  init_fs();
+    init_fs();
 
-  uint32_t entry = loader(NULL, NULL);
-  ((void (*)(void))entry)();
+    uint32_t entry = loader(NULL, NULL);
+    ((void (*)(void))entry)();
 
-  panic("Should not reach here");
+    panic("Should not reach here");
 }

@@ -31,62 +31,62 @@ extern "C"
 
 VOID
 PAL_DrawOpeningMenuBackground(
-   VOID
+    VOID
 );
 
 INT
 PAL_OpeningMenu(
-   VOID
+    VOID
 );
 
 INT
 PAL_SaveSlotMenu(
-   WORD        wDefaultSlot
+    WORD        wDefaultSlot
 );
 
 BOOL
 PAL_ConfirmMenu(
-   VOID
+    VOID
 );
 
 BOOL
 PAL_SwitchMenu(
-   BOOL      fEnabled
+    BOOL      fEnabled
 );
 
 VOID
 PAL_InGameMagicMenu(
-   VOID
+    VOID
 );
 
 VOID
 PAL_InGameMenu(
-   VOID
+    VOID
 );
 
 VOID
 PAL_PlayerStatus(
-   VOID
+    VOID
 );
 
 WORD
 PAL_ItemUseMenu(
-   WORD           wItemToUse
+    WORD           wItemToUse
 );
 
 VOID
 PAL_BuyMenu(
-   WORD           wStoreNum
+    WORD           wStoreNum
 );
 
 VOID
 PAL_SellMenu(
-   VOID
+    VOID
 );
 
 VOID
 PAL_EquipItemMenu(
-   WORD           wItem
+    WORD           wItem
 );
 
 #ifdef __cplusplus

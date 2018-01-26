@@ -32,12 +32,12 @@ static char sccsid[] = "%W% (Berkeley) %G%";
 
 int
 __srget (fp)
-     register FILE *fp;
+register FILE *fp;
 {
-  if (__srefill (fp) == 0)
+    if (__srefill (fp) == 0)
     {
-      fp->_r--;
-      return *fp->_p++;
+        fp->_r--;
+        return *fp->_p++;
     }
-  return EOF;
+    return EOF;
 }

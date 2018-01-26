@@ -66,35 +66,35 @@ extern char *environ[];
 
 int
 _system_r (ptr, s)
-     struct _reent *ptr;
-     _CONST char *s;
+struct _reent *ptr;
+_CONST char *s;
 {
-  char *argv[4];
-  int pid, status;
+    char *argv[4];
+    int pid, status;
 
 #ifdef NO_EXEC
-  return 0;
+    return 0;
 #else
-  argv[0] = "sh";
-  argv[1] = "-c";
-  if (s == NULL)
-    argv[2] = (char *) "exit 0";
-  else
-    argv[2] = (char *) s;
-  argv[3] = NULL;
+    argv[0] = "sh";
+    argv[1] = "-c";
+    if (s == NULL)
+        argv[2] = (char *) "exit 0";
+    else
+        argv[2] = (char *) s;
+    argv[3] = NULL;
 
-  if ((pid = _fork_r (ptr)) == 0)
+    if ((pid = _fork_r (ptr)) == 0)
     {
-      _execve ("/bin/sh", argv, environ);
-      exit (100);
+        _execve ("/bin/sh", argv, environ);
+        exit (100);
     }
-  else if (pid == -1)
-    return s == NULL ? 0 : -1;
-  else
+    else if (pid == -1)
+        return s == NULL ? 0 : -1;
+    else
     {
-      _wait_r (ptr, &status);
-      status = (status >> 8) & 0xff;
-      return s == NULL ? status == 0 : status;
+        _wait_r (ptr, &status);
+        status = (status >> 8) & 0xff;
+        return s == NULL ? status == 0 : status;
     }
 #endif
 }
@@ -103,9 +103,9 @@ _system_r (ptr, s)
 
 int
 system (s)
-     _CONST char *s;
+_CONST char *s;
 {
-  return _system_r (_REENT, s);
+    return _system_r (_REENT, s);
 }
 
 #endif

@@ -8,7 +8,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -32,31 +32,32 @@ static float zero   =  0.0;
 #endif
 
 #ifdef __STDC__
-	float __ieee754_log10f(float x)
+float __ieee754_log10f(float x)
 #else
-	float __ieee754_log10f(x)
-	float x;
+float __ieee754_log10f(x)
+float x;
 #endif
 {
-	float y,z;
-	__int32_t i,k,hx;
+    float y,z;
+    __int32_t i,k,hx;
 
-	GET_FLOAT_WORD(hx,x);
+    GET_FLOAT_WORD(hx,x);
 
-        k=0;
-        if (hx < 0x00800000) {                  /* x < 2**-126  */
-            if ((hx&0x7fffffff)==0)
-                return -two25/zero;             /* log(+-0)=-inf */
-            if (hx<0) return (x-x)/zero;        /* log(-#) = NaN */
-            k -= 25; x *= two25; /* subnormal number, scale up x */
-	    GET_FLOAT_WORD(hx,x);
-        }
-	if (hx >= 0x7f800000) return x+x;
-	k += (hx>>23)-127;
-	i  = ((__uint32_t)k&0x80000000)>>31;
-        hx = (hx&0x007fffff)|((0x7f-i)<<23);
-        y  = (float)(k+i);
-	SET_FLOAT_WORD(x,hx);
-	z  = y*log10_2lo + ivln10*__ieee754_logf(x);
-	return  z+y*log10_2hi;
+    k=0;
+    if (hx < 0x00800000) {                  /* x < 2**-126  */
+        if ((hx&0x7fffffff)==0)
+            return -two25/zero;             /* log(+-0)=-inf */
+        if (hx<0) return (x-x)/zero;        /* log(-#) = NaN */
+        k -= 25;
+        x *= two25; /* subnormal number, scale up x */
+        GET_FLOAT_WORD(hx,x);
+    }
+    if (hx >= 0x7f800000) return x+x;
+    k += (hx>>23)-127;
+    i  = ((__uint32_t)k&0x80000000)>>31;
+    hx = (hx&0x007fffff)|((0x7f-i)<<23);
+    y  = (float)(k+i);
+    SET_FLOAT_WORD(x,hx);
+    z  = y*log10_2lo + ivln10*__ieee754_logf(x);
+    return  z+y*log10_2hi;
 }

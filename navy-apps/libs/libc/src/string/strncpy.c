@@ -41,25 +41,25 @@ QUICKREF
 
 char *
 _DEFUN (strncpy, (dst, src, n),
-	char *dst _AND
-	_CONST char *src _AND
-	size_t n)
+        char *dst _AND
+        _CONST char *src _AND
+        size_t n)
 {
-  char *dscan;
-  _CONST char *sscan;
-  size_t count;
+    char *dscan;
+    _CONST char *sscan;
+    size_t count;
 
-  dscan = dst;
-  sscan = src;
-  count = n;
-  while (count > 0)
+    dscan = dst;
+    sscan = src;
+    count = n;
+    while (count > 0)
     {
-      --count;
-      if ((*dscan++ = *sscan++) == '\0')
-	break;
+        --count;
+        if ((*dscan++ = *sscan++) == '\0')
+            break;
     }
-  while (count-- > 0)
-    *dscan++ = '\0';
+    while (count-- > 0)
+        *dscan++ = '\0';
 
-  return dst;
+    return dst;
 }

@@ -9,10 +9,10 @@ inline byte psg_io_read(word address)
     // Joystick 1
     if (address == 0x4016) {
         if (p++ < 9) {
-          return keydown[p];
-          //   p | 1 2      3     4  5    6    7     8
-          // key | A B SELECT START UP DOWN LEFT RIGHT
-          return 0;
+            return keydown[p];
+            //   p | 1 2      3     4  5    6    7     8
+            // key | A B SELECT START UP DOWN LEFT RIGHT
+            return 0;
         }
     }
     return 0;

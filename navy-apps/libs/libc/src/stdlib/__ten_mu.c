@@ -9,15 +9,15 @@
 
 int
 _DEFUN (__ten_mul, (acc, digit),
-	double *acc _AND
-	int digit)
+        double *acc _AND
+        int digit)
 {
-  /*
-   * [atw] Crude, but effective (at least on a KB)...
-   */
+    /*
+     * [atw] Crude, but effective (at least on a KB)...
+     */
 
-  *acc *= 10;
-  *acc += digit;
+    *acc *= 10;
+    *acc += digit;
 
-  return 0;			/* no overflow */
+    return 0;			/* no overflow */
 }

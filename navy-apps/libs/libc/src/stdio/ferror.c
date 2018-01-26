@@ -61,7 +61,7 @@ static char sccsid[] = "%W% (Berkeley) %G%";
 
 int
 _DEFUN (ferror, (fp),
-	FILE * fp)
+        FILE * fp)
 {
-  return __sferror (fp);
+    return __sferror (fp);
 }

@@ -57,7 +57,7 @@ No supporting OS subroutines are required.
 
 _VOID
 _DEFUN (clearerr, (fp),
-	FILE * fp)
+        FILE * fp)
 {
-  __sclearerr (fp);
+    __sclearerr (fp);
 }

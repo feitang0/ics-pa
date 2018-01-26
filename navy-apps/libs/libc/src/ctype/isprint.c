@@ -22,7 +22,7 @@ TRAD_SYNOPSIS
 DESCRIPTION
 <<isprint>> is a macro which classifies ASCII integer values by table
 lookup.  It is a predicate returning non-zero for printable
-characters, and 0 for other character arguments. 
+characters, and 0 for other character arguments.
 It is defined only when <<isascii>>(<[c]>) is true or <[c]> is EOF.
 
 You can use a compiled subroutine instead of the macro definition by
@@ -47,7 +47,7 @@ No supporting OS subroutines are required.
 int
 _DEFUN(isgraph,(c),int c)
 {
-	return((_ctype_ + 1)[c] & (_P|_U|_L|_N));
+    return((_ctype_ + 1)[c] & (_P|_U|_L|_N));
 }
 
 
@@ -55,6 +55,6 @@ _DEFUN(isgraph,(c),int c)
 int
 _DEFUN(isprint,(c),int c)
 {
-	return((_ctype_ + 1)[c] & (_P|_U|_L|_N|_B));
+    return((_ctype_ + 1)[c] & (_P|_U|_L|_N|_B));
 }
 

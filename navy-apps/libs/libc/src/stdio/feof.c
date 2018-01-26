@@ -32,9 +32,9 @@ No supporting OS subroutines are required.
 
 #undef feof
 
-int 
+int
 _DEFUN (feof, (fp),
-	FILE * fp)
+        FILE * fp)
 {
-  return __sfeof (fp);
+    return __sfeof (fp);
 }

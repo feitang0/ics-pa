@@ -37,19 +37,19 @@ QUICKREF
 
 _PTR
 _DEFUN (memcpy, (out, in, length),
-	_PTR out _AND
-	_CONST _PTR in _AND
-	size_t length)
+        _PTR out _AND
+        _CONST _PTR in _AND
+        size_t length)
 {
-  char *dst = (char *) out;
-  char *src = (char *) in;
+    char *dst = (char *) out;
+    char *src = (char *) in;
 
-  _PTR save = out;
+    _PTR save = out;
 
-  while (length--)
+    while (length--)
     {
-      *dst++ = *src++;
+        *dst++ = *src++;
     }
 
-  return save;
+    return save;
 }

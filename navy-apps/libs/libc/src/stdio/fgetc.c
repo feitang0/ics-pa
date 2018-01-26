@@ -40,7 +40,7 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 
 int
 _DEFUN (fgetc, (fp),
-	FILE * fp)
+        FILE * fp)
 {
-  return __sgetc (fp);
+    return __sgetc (fp);
 }

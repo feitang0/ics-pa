@@ -18,18 +18,18 @@ extern "C" {
 #define REF_SCORE  100000
 
 #ifdef SETTING_TEST
-  #define SETTING 0
+#define SETTING 0
 #else
-  #ifdef SETTING_REF
-    #define SETTING 1
-  #else
-    #error "Must define SETTING_TEST or SETTING_REF"
-  #endif
+#ifdef SETTING_REF
+#define SETTING 1
+#else
+#error "Must define SETTING_TEST or SETTING_REF"
+#endif
 #endif
 
 #define REPEAT  1
 
-//                 size |  heap | time |  checksum   
+//                 size |  heap | time |  checksum
 #define QSORT_SM {     100,   1 KB,     0, 0x08467105}
 #define QSORT_LG {  100000, 640 KB,  5519, 0xed8cff89}
 #define QUEEN_SM {       8,   0 KB,     0, 0x0000005c}
@@ -73,25 +73,25 @@ extern "C" {
 BENCHMARK_LIST(DECL)
 
 typedef struct Setting {
-  int size;
-  unsigned long mlim, ref;
-  uint32_t checksum;
+    int size;
+    unsigned long mlim, ref;
+    uint32_t checksum;
 } Setting;
 
 typedef struct Benchmark {
-  void (*prepare)();
-  void (*run)();
-  int (*validate)();
-  const char *name, *desc;
-  Setting settings[2];
+    void (*prepare)();
+    void (*run)();
+    int (*validate)();
+    const char *name, *desc;
+    Setting settings[2];
 } Benchmark;
 
 extern Benchmark *current;
 extern Setting *setting;
 
 typedef struct Result {
-  int pass;
-  unsigned long tsc, msec;
+    int pass;
+    unsigned long tsc, msec;
 } Result;
 
 void prepare(Result *res);

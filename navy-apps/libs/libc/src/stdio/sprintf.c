@@ -111,7 +111,7 @@ DESCRIPTION
 		be ignored.  For <<d>>, <<i>>, <<o>>, <<u>>, <<x>>, and <<X>>
 		conversions, if a precision <[prec]> is specified, the zero (<<0>>)
         flag is ignored.
-		
+
 		Note that <<0>> is interpreted as a flag, not as the beginning
         of a field width.
 
@@ -204,7 +204,7 @@ DESCRIPTION
 
 		o c
 		prints <[arg]> as single character
-		
+
 		o s
 		prints characters until precision is reached or a null terminator
 		is encountered; takes a string pointer
@@ -232,7 +232,7 @@ DESCRIPTION
 		o f
 		prints a signed value of the form <<[-]9999.9999>>; takes
 		a floating point number
-	
+
 		o e
 		prints a signed	value of the form <<[-]9.9999e[+|-]999>>; takes a
 		floating point number
@@ -245,7 +245,7 @@ DESCRIPTION
 		prints a signed value in either <<f>> or <<e>> form, based on given
 		value and precision---trailing zeros and the decimal point are
 		printed only if necessary; takes a floating point number
-	
+
 		o G
 		prints the same way as <<g>>, but using <<E>> for the exponent if an
 		exponent is needed; takes a floating point number
@@ -292,29 +292,29 @@ int
 _DEFUN (_sprintf_r, (ptr, str, fmt), struct _reent *ptr _AND char *str _AND _CONST char *fmt _DOTS)
 #else
 _sprintf_r (ptr, str, fmt, va_alist)
-     struct _reent *ptr;
-     char *str;
-     _CONST char *fmt;
-     va_dcl
+struct _reent *ptr;
+char *str;
+_CONST char *fmt;
+va_dcl
 #endif
 {
-  int ret;
-  va_list ap;
-  FILE f;
+    int ret;
+    va_list ap;
+    FILE f;
 
-  f._flags = __SWR | __SSTR;
-  f._bf._base = f._p = (unsigned char *) str;
-  f._bf._size = f._w = INT_MAX;
-  f._data = ptr;
+    f._flags = __SWR | __SSTR;
+    f._bf._base = f._p = (unsigned char *) str;
+    f._bf._size = f._w = INT_MAX;
+    f._data = ptr;
 #ifdef _HAVE_STDC
-  va_start (ap, fmt);
+    va_start (ap, fmt);
 #else
-  va_start (ap);
+    va_start (ap);
 #endif
-  ret = vfprintf (&f, fmt, ap);
-  va_end (ap);
-  *f._p = 0;
-  return (ret);
+    ret = vfprintf (&f, fmt, ap);
+    va_end (ap);
+    *f._p = 0;
+    return (ret);
 }
 
 #ifndef _REENT_ONLY
@@ -324,28 +324,28 @@ int
 _DEFUN (sprintf, (str, fmt), char *str _AND _CONST char *fmt _DOTS)
 #else
 sprintf (str, fmt, va_alist)
-     char *str;
-     _CONST char *fmt;
-     va_dcl
+char *str;
+_CONST char *fmt;
+va_dcl
 #endif
 {
-  int ret;
-  va_list ap;
-  FILE f;
+    int ret;
+    va_list ap;
+    FILE f;
 
-  f._flags = __SWR | __SSTR;
-  f._bf._base = f._p = (unsigned char *) str;
-  f._bf._size = f._w = INT_MAX;
-  f._data = _REENT;
+    f._flags = __SWR | __SSTR;
+    f._bf._base = f._p = (unsigned char *) str;
+    f._bf._size = f._w = INT_MAX;
+    f._data = _REENT;
 #ifdef _HAVE_STDC
-  va_start (ap, fmt);
+    va_start (ap, fmt);
 #else
-  va_start (ap);
+    va_start (ap);
 #endif
-  ret = vfprintf (&f, fmt, ap);
-  va_end (ap);
-  *f._p = 0;
-  return (ret);
+    ret = vfprintf (&f, fmt, ap);
+    va_end (ap);
+    *f._p = 0;
+    return (ret);
 }
 
 #endif

@@ -49,9 +49,9 @@ ANSI C requires <<gmtime>>.
 
 struct tm *
 _DEFUN (gmtime, (tim_p),
-	_CONST time_t * tim_p)
+        _CONST time_t * tim_p)
 {
-  time_t tim = *tim_p + _GMT_OFFSET;
+    time_t tim = *tim_p + _GMT_OFFSET;
 
-  return (localtime (&tim));
+    return (localtime (&tim));
 }

@@ -47,14 +47,14 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 int
 iprintf (const char *fmt,...)
 {
-  int ret;
-  va_list ap;
+    int ret;
+    va_list ap;
 
-  va_start (ap, fmt);
-  _stdout_r (_REENT)->_data = _REENT;
-  ret = vfiprintf (stdout, fmt, ap);
-  va_end (ap);
-  return ret;
+    va_start (ap, fmt);
+    _stdout_r (_REENT)->_data = _REENT;
+    ret = vfiprintf (stdout, fmt, ap);
+    va_end (ap);
+    return ret;
 }
 
 #else
@@ -63,17 +63,17 @@ iprintf (const char *fmt,...)
 
 int
 iprintf (fmt, va_alist)
-     char *fmt;
-     va_dcl
+char *fmt;
+va_dcl
 {
-  int ret;
-  va_list ap;
+    int ret;
+    va_list ap;
 
-  va_start (ap);
-  _stdout_r (_REENT)->_data = _REENT;
-  ret = vfiprintf (stdout, fmt, ap);
-  va_end (ap);
-  return ret;
+    va_start (ap);
+    _stdout_r (_REENT)->_data = _REENT;
+    ret = vfiprintf (stdout, fmt, ap);
+    va_end (ap);
+    return ret;
 }
 
 #endif /* ! _HAVE_STDC */
@@ -86,13 +86,13 @@ iprintf (fmt, va_alist)
 int
 _iprintf_r (struct _reent *ptr, const char *fmt, ...)
 {
-  int ret;
-  va_list ap;
+    int ret;
+    va_list ap;
 
-  va_start (ap, fmt);
-  ret = vfiprintf (_stdout_r (ptr), fmt, ap);
-  va_end (ap);
-  return ret;
+    va_start (ap, fmt);
+    ret = vfiprintf (_stdout_r (ptr), fmt, ap);
+    va_end (ap);
+    return ret;
 }
 
 #else
@@ -101,18 +101,18 @@ _iprintf_r (struct _reent *ptr, const char *fmt, ...)
 
 int
 _iprintf_r (data, fmt, va_alist)
-     char *data;
-     char *fmt;
-     va_dcl
+char *data;
+char *fmt;
+va_dcl
 {
-  int ret;
-  struct _reent *ptr = data;
-  va_list ap;
+    int ret;
+    struct _reent *ptr = data;
+    va_list ap;
 
-  va_start (ap);
-  ret = vfiprintf (_stdout_r (ptr), fmt, ap);
-  va_end (ap);
-  return ret;
+    va_start (ap);
+    ret = vfiprintf (_stdout_r (ptr), fmt, ap);
+    va_end (ap);
+    return ret;
 }
 
 #endif

@@ -6,7 +6,7 @@
  *
  * Developed at SunPro, a Sun Microsystems, Inc. business.
  * Permission to use, copy, modify, and distribute this
- * software is freely granted, provided that this notice 
+ * software is freely granted, provided that this notice
  * is preserved.
  * ====================================================
  */
@@ -58,7 +58,7 @@ DESCRIPTION
 	These functions provide information on the floating point
 	argument supplied.
 
-	There are five major number formats - 
+	There are five major number formats -
 	o+
 	o zero
 	 a number which contains all zero bits.
@@ -76,7 +76,7 @@ DESCRIPTION
 	<<isnan>> returns 1 if the argument is a nan. <<isinf>>
 	returns 1 if the argument is infinity.  <<finite>> returns 1 if the
 	argument is zero, subnormal or normal.
-	
+
 	The <<isnanf>>, <<isinff>> and <<finitef>> perform the same
 	operations as their <<isnan>>, <<isinf>> and <<finite>>
 	counterparts, but on single precision floating point numbers.
@@ -103,20 +103,20 @@ QUICKREF
 #include "fdlibm.h"
 
 #ifdef __STDC__
-	int isnan(double x)
+int isnan(double x)
 #else
-	int isnan(x)
-	double x;
+int isnan(x)
+double x;
 #endif
 {
 #ifndef _DOUBLE_IS_32BITS
-	__int32_t hx,lx;
-	EXTRACT_WORDS(hx,lx,x);
-	hx &= 0x7fffffff;
-	hx |= (__uint32_t)(lx|(-lx))>>31;	
-	hx = 0x7ff00000 - hx;
-	return (int)(((__uint32_t)(hx))>>31);
+    __int32_t hx,lx;
+    EXTRACT_WORDS(hx,lx,x);
+    hx &= 0x7fffffff;
+    hx |= (__uint32_t)(lx|(-lx))>>31;
+    hx = 0x7ff00000 - hx;
+    return (int)(((__uint32_t)(hx))>>31);
 #else /* defined (_DOUBLE_IS_32BITS) */
-	return isnanf ((float) x);
+    return isnanf ((float) x);
 #endif /* defined (_DOUBLE_IS_32BITS) */
 }

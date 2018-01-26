@@ -27,7 +27,7 @@ int errno;
 /*
 FUNCTION
 	<<_fstat_r>>---Reentrant version of fstat
-	
+
 INDEX
 	_fstat_r
 
@@ -51,17 +51,17 @@ DESCRIPTION
 
 int
 _fstat_r (ptr, fd, pstat)
-     struct _reent *ptr;
-     int fd;
-     struct stat *pstat;
+struct _reent *ptr;
+int fd;
+struct stat *pstat;
 {
-  int ret;
+    int ret;
 
-  errno = 0;
-  ret = _fstat (fd, pstat);
-  if (errno != 0)
-    ptr->_errno = errno;
-  return ret;
+    errno = 0;
+    ret = _fstat (fd, pstat);
+    if (errno != 0)
+        ptr->_errno = errno;
+    return ret;
 }
 
 #endif /* ! defined (REENTRANT_SYSCALLS_PROVIDED) */

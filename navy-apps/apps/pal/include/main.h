@@ -55,7 +55,7 @@
 
 VOID
 PAL_Shutdown(
-   VOID
+    VOID
 );
 
 #endif

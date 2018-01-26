@@ -13,10 +13,10 @@ typedef _CLOCK_T_ clock_t;
 #endif
 
 struct tms {
-	clock_t	tms_utime;		/* user time */
-	clock_t	tms_stime;		/* system time */
-	clock_t	tms_cutime;		/* user time, children */
-	clock_t	tms_cstime;		/* system time, children */
+    clock_t	tms_utime;		/* user time */
+    clock_t	tms_stime;		/* system time */
+    clock_t	tms_cutime;		/* user time, children */
+    clock_t	tms_cstime;		/* system time, children */
 };
 
 clock_t _EXFUN(times,(struct tms *));

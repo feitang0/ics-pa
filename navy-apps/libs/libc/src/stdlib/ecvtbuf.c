@@ -76,63 +76,63 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 
 static void
 _DEFUN (print_f, (ptr, buf, invalue, ndigit, type, dot, mode),
-	struct _reent *ptr _AND
-	char *buf _AND
-	double invalue _AND
-	int ndigit _AND
-	char type _AND
-	int dot _AND
-	int mode)
+        struct _reent *ptr _AND
+        char *buf _AND
+        double invalue _AND
+        int ndigit _AND
+        char type _AND
+        int dot _AND
+        int mode)
 {
-  int decpt;
-  int sign;
-  char *p, *start, *end;
+    int decpt;
+    int sign;
+    char *p, *start, *end;
 
-  start = p = _dtoa_r (ptr, invalue, mode, ndigit, &decpt, &sign, &end);
+    start = p = _dtoa_r (ptr, invalue, mode, ndigit, &decpt, &sign, &end);
 
-  if (decpt == 9999)
+    if (decpt == 9999)
     {
-      strcpy (buf, p);
-      return;
+        strcpy (buf, p);
+        return;
     }
-  while (*p && decpt > 0)
+    while (*p && decpt > 0)
     {
-      *buf++ = *p++;
-      decpt--;
+        *buf++ = *p++;
+        decpt--;
     }
-  /* Even if not in buffer */
-  while (decpt > 0)
+    /* Even if not in buffer */
+    while (decpt > 0)
     {
-      *buf++ = '0';
-      decpt--;
+        *buf++ = '0';
+        decpt--;
     }
 
-  if (dot || *p)
+    if (dot || *p)
     {
-      if (p == start)
-	*buf++ = '0';
-      *buf++ = '.';
-      while (decpt < 0 && ndigit > 0)
-	{
-	  *buf++ = '0';
-	  decpt++;
-	  ndigit--;
-	}
+        if (p == start)
+            *buf++ = '0';
+        *buf++ = '.';
+        while (decpt < 0 && ndigit > 0)
+        {
+            *buf++ = '0';
+            decpt++;
+            ndigit--;
+        }
 
-      /* Print rest of stuff */
-      while (*p && ndigit > 0)
-	{
-	  *buf++ = *p++;
-	  ndigit--;
-	}
-      /* And trailing zeros */
-      while (ndigit > 0)
-	{
-	  *buf++ = '0';
-	  ndigit--;
-	}
+        /* Print rest of stuff */
+        while (*p && ndigit > 0)
+        {
+            *buf++ = *p++;
+            ndigit--;
+        }
+        /* And trailing zeros */
+        while (ndigit > 0)
+        {
+            *buf++ = '0';
+            ndigit--;
+        }
     }
-  *buf++ = 0;
+    *buf++ = 0;
 }
 
 /* Print number in e format with width chars after.
@@ -144,80 +144,80 @@ _DEFUN (print_f, (ptr, buf, invalue, ndigit, type, dot, mode),
 
 static void
 _DEFUN (print_e, (ptr, buf, invalue, width, type, dot),
-	struct _reent *ptr _AND
-	char *buf _AND
-	double invalue _AND
-	int width _AND
-	char type _AND
-	int dot)
+        struct _reent *ptr _AND
+        char *buf _AND
+        double invalue _AND
+        int width _AND
+        char type _AND
+        int dot)
 {
-  int dp;
-  int sign;
-  char *end;
-  char *p;
-  int decpt;
-  int top;
-  int ndigit = width;
+    int dp;
+    int sign;
+    char *end;
+    char *p;
+    int decpt;
+    int top;
+    int ndigit = width;
 
-  p = _dtoa_r (ptr, invalue, 2, width + 1, &decpt, &sign, &end);
+    p = _dtoa_r (ptr, invalue, 2, width + 1, &decpt, &sign, &end);
 
-  if (decpt == 9999)
+    if (decpt == 9999)
     {
-      strcpy (buf, p);
-      return;
+        strcpy (buf, p);
+        return;
     }
 
-  *buf++ = *p++;
-  if (dot || ndigit != 0)
-    *buf++ = '.';
+    *buf++ = *p++;
+    if (dot || ndigit != 0)
+        *buf++ = '.';
 
-  while (*p && ndigit > 0)
+    while (*p && ndigit > 0)
     {
-      *buf++ = *p++;
-      ndigit--;
+        *buf++ = *p++;
+        ndigit--;
     }
 
-  /* Add trailing zeroes to fill out to ndigits unless this is 'g' format.
-     Also, convert g/G to e/E.  */
+    /* Add trailing zeroes to fill out to ndigits unless this is 'g' format.
+       Also, convert g/G to e/E.  */
 
-  if (type == 'g')
-    type = 'e';
-  else if (type == 'G')
-    type = 'E';
-  else
+    if (type == 'g')
+        type = 'e';
+    else if (type == 'G')
+        type = 'E';
+    else
     {
-      while (ndigit > 0)
-	{
-	  *buf++ = '0';
-	  ndigit--;
-	}
+        while (ndigit > 0)
+        {
+            *buf++ = '0';
+            ndigit--;
+        }
     }
 
-  /* Add the exponent.  */
+    /* Add the exponent.  */
 
-  *buf++ = type;
-  decpt--;
-  if (decpt < 0)
+    *buf++ = type;
+    decpt--;
+    if (decpt < 0)
     {
-      *buf++ = '-';
-      decpt = -decpt;
+        *buf++ = '-';
+        decpt = -decpt;
     }
-  else
+    else
     {
-      *buf++ = '+';
+        *buf++ = '+';
     }
-  if (decpt > 99)
+    if (decpt > 99)
     {
-      int top = decpt / 100;
-      *buf++ = top + '0';
-      decpt -= top * 100;
+        int top = decpt / 100;
+        *buf++ = top + '0';
+        decpt -= top * 100;
     }
-  top = decpt / 10;
-  *buf++ = top + '0';
-  decpt -= top * 10;
-  *buf++ = decpt + '0';
+    top = decpt / 10;
+    *buf++ = top + '0';
+    decpt -= top * 10;
+    *buf++ = decpt + '0';
 
-  *buf++ = 0;
+    *buf++ = 0;
 }
 
 #ifndef _REENT_ONLY
@@ -228,242 +228,242 @@ _DEFUN (print_e, (ptr, buf, invalue, width, type, dot),
 
 char *
 _DEFUN (fcvtbuf, (invalue, ndigit, decpt, sign, fcvt_buf),
-	double invalue _AND
-	int ndigit _AND
-	int *decpt _AND
-	int *sign _AND
-	char *fcvt_buf)
+        double invalue _AND
+        int ndigit _AND
+        int *decpt _AND
+        int *sign _AND
+        char *fcvt_buf)
 {
-  char *save;
-  char *p;
-  char *end;
-  int done = 0;
+    char *save;
+    char *p;
+    char *end;
+    int done = 0;
 
-  if (fcvt_buf == NULL)
+    if (fcvt_buf == NULL)
     {
-      if (_REENT->_cvtlen <= ndigit)
-	{
-	  if ((fcvt_buf = (char *) _realloc_r (_REENT, _REENT->_cvtbuf,
-					       ndigit + 1)) == NULL)
-	    return NULL;
-	  _REENT->_cvtlen = ndigit + 1;
-	  _REENT->_cvtbuf = fcvt_buf;
-	}
+        if (_REENT->_cvtlen <= ndigit)
+        {
+            if ((fcvt_buf = (char *) _realloc_r (_REENT, _REENT->_cvtbuf,
+                                                 ndigit + 1)) == NULL)
+                return NULL;
+            _REENT->_cvtlen = ndigit + 1;
+            _REENT->_cvtbuf = fcvt_buf;
+        }
 
-      fcvt_buf = _REENT->_cvtbuf ;
+        fcvt_buf = _REENT->_cvtbuf ;
     }
 
-  save = fcvt_buf;
+    save = fcvt_buf;
 
-  if (invalue < 1.0 && invalue > -1.0)
+    if (invalue < 1.0 && invalue > -1.0)
     {
-      p = _dtoa_r (_REENT, invalue, 2, ndigit, decpt, sign, &end);
+        p = _dtoa_r (_REENT, invalue, 2, ndigit, decpt, sign, &end);
     }
-  else
+    else
     {
-      p = _dtoa_r (_REENT, invalue, 3, ndigit, decpt, sign, &end);
+        p = _dtoa_r (_REENT, invalue, 3, ndigit, decpt, sign, &end);
     }
 
-  /* Now copy */
+    /* Now copy */
 
-  while (p < end)
+    while (p < end)
     {
-      *fcvt_buf++ = *p++;
-      done++;
+        *fcvt_buf++ = *p++;
+        done++;
     }
-  /* And unsuppress the trailing zeroes */
-  while (done < ndigit)
+    /* And unsuppress the trailing zeroes */
+    while (done < ndigit)
     {
-      *fcvt_buf++ = '0';
-      done++;
+        *fcvt_buf++ = '0';
+        done++;
     }
-  *fcvt_buf++ = 0;
-  return save;
+    *fcvt_buf++ = 0;
+    return save;
 }
 
 char *
 _DEFUN (ecvtbuf, (invalue, ndigit, decpt, sign, fcvt_buf),
-	double invalue _AND
-	int ndigit _AND
-	int *decpt _AND
-	int *sign _AND
-	char *fcvt_buf)
+        double invalue _AND
+        int ndigit _AND
+        int *decpt _AND
+        int *sign _AND
+        char *fcvt_buf)
 {
-  char *save;
-  char *p;
-  char *end;
-  int done = 0;
+    char *save;
+    char *p;
+    char *end;
+    int done = 0;
 
-  if (fcvt_buf == NULL)
+    if (fcvt_buf == NULL)
     {
-      if (_REENT->_cvtlen <= ndigit)
-	{
-	  if ((fcvt_buf = (char *) _realloc_r (_REENT, _REENT->_cvtbuf,
-					       ndigit + 1)) == NULL)
-	    return NULL;
-	  _REENT->_cvtlen = ndigit + 1;
-	  _REENT->_cvtbuf = fcvt_buf;
-	}
+        if (_REENT->_cvtlen <= ndigit)
+        {
+            if ((fcvt_buf = (char *) _realloc_r (_REENT, _REENT->_cvtbuf,
+                                                 ndigit + 1)) == NULL)
+                return NULL;
+            _REENT->_cvtlen = ndigit + 1;
+            _REENT->_cvtbuf = fcvt_buf;
+        }
 
-      fcvt_buf = _REENT->_cvtbuf ;
+        fcvt_buf = _REENT->_cvtbuf ;
     }
 
-  save = fcvt_buf;
+    save = fcvt_buf;
 
-  p = _dtoa_r (_REENT, invalue, 2, ndigit, decpt, sign, &end);
+    p = _dtoa_r (_REENT, invalue, 2, ndigit, decpt, sign, &end);
 
-  /* Now copy */
+    /* Now copy */
 
-  while (p < end)
+    while (p < end)
     {
-      *fcvt_buf++ = *p++;
-      done++;
+        *fcvt_buf++ = *p++;
+        done++;
     }
-  /* And unsuppress the trailing zeroes */
-  while (done < ndigit)
+    /* And unsuppress the trailing zeroes */
+    while (done < ndigit)
     {
-      *fcvt_buf++ = '0';
-      done++;
+        *fcvt_buf++ = '0';
+        done++;
     }
-  *fcvt_buf++ = 0;
-  return save;
+    *fcvt_buf++ = 0;
+    return save;
 }
 
 #endif
 
 char *
 _DEFUN (_gcvt, (ptr, invalue, ndigit, buf, type, dot),
-	struct _reent *ptr _AND
-	double invalue _AND
-	int ndigit _AND
-	char *buf _AND
-	char type _AND
-	int dot)
+        struct _reent *ptr _AND
+        double invalue _AND
+        int ndigit _AND
+        char *buf _AND
+        char type _AND
+        int dot)
 {
-  char *save = buf;
+    char *save = buf;
 
-  if (invalue < 0)
+    if (invalue < 0)
     {
-      invalue = -invalue;
+        invalue = -invalue;
     }
 
-  if (invalue == 0)
+    if (invalue == 0)
     {
-      *buf++ = '0';
-      *buf = '\0';
+        *buf++ = '0';
+        *buf = '\0';
     }
-  else
-    /* Which one to print ?
-       ANSI says that anything with more that 4 zeros after the . or more
-       than precision digits before is printed in e with the qualification
-       that trailing zeroes are removed from the fraction portion.  */
+    else
+        /* Which one to print ?
+           ANSI says that anything with more that 4 zeros after the . or more
+           than precision digits before is printed in e with the qualification
+           that trailing zeroes are removed from the fraction portion.  */
 
-  if (0.0001 >= invalue || invalue >= _mprec_log10 (ndigit))
-    {
-      /* We subtract 1 from ndigit because in the 'e' format the precision is
-	 the number of digits after the . but in 'g' format it is the number
-	 of significant digits.
+        if (0.0001 >= invalue || invalue >= _mprec_log10 (ndigit))
+        {
+            /* We subtract 1 from ndigit because in the 'e' format the precision is
+            the number of digits after the . but in 'g' format it is the number
+             of significant digits.
 
-	 We defer changing type to e/E so that print_e() can know it's us
-	 calling and thus should remove trailing zeroes.  */
+             We defer changing type to e/E so that print_e() can know it's us
+             calling and thus should remove trailing zeroes.  */
 
-      print_e (ptr, buf, invalue, ndigit - 1, type, dot);
-    }
-  else
-    {
-      int decpt;
-      int sign;
-      char *end;
-      char *p;
+            print_e (ptr, buf, invalue, ndigit - 1, type, dot);
+        }
+        else
+        {
+            int decpt;
+            int sign;
+            char *end;
+            char *p;
 
-      if (invalue < 1.0)
-	{
-	  /* what we want is ndigits after the point */
-	  p = _dtoa_r (ptr, invalue, 3, ndigit, &decpt, &sign, &end);
-	}
-      else
-	{
-	  p = _dtoa_r (ptr, invalue, 2, ndigit, &decpt, &sign, &end);
-	}
+            if (invalue < 1.0)
+            {
+                /* what we want is ndigits after the point */
+                p = _dtoa_r (ptr, invalue, 3, ndigit, &decpt, &sign, &end);
+            }
+            else
+            {
+                p = _dtoa_r (ptr, invalue, 2, ndigit, &decpt, &sign, &end);
+            }
 
-      if (decpt == 9999)
-	{
-	  strcpy (buf, p);
-	  return save;
-	}
-      while (*p && decpt > 0)
-	{
-	  *buf++ = *p++;
-	  decpt--;
-	  ndigit--;
-	}
-      /* Even if not in buffer */
-      while (decpt > 0 && ndigit > 0)
-	{
-	  *buf++ = '0';
-	  decpt--;
-	  ndigit--;
-	}
+            if (decpt == 9999)
+            {
+                strcpy (buf, p);
+                return save;
+            }
+            while (*p && decpt > 0)
+            {
+                *buf++ = *p++;
+                decpt--;
+                ndigit--;
+            }
+            /* Even if not in buffer */
+            while (decpt > 0 && ndigit > 0)
+            {
+                *buf++ = '0';
+                decpt--;
+                ndigit--;
+            }
 
-      if (dot || *p)
-	{
-	  if (buf == save)
-	    *buf++ = '0';
-	  *buf++ = '.';
-	  while (decpt < 0 && ndigit > 0)
-	    {
-	      *buf++ = '0';
-	      decpt++;
-	      ndigit--;
-	    }
+            if (dot || *p)
+            {
+                if (buf == save)
+                    *buf++ = '0';
+                *buf++ = '.';
+                while (decpt < 0 && ndigit > 0)
+                {
+                    *buf++ = '0';
+                    decpt++;
+                    ndigit--;
+                }
 
-	  /* Print rest of stuff */
-	  while (*p && ndigit > 0)
-	    {
-	      *buf++ = *p++;
-	      ndigit--;
-	    }
-	  /* And trailing zeros */
-	  if (dot)
-	    {
-	      while (ndigit > 0)
-		{
-		  *buf++ = '0';
-		  ndigit--;
-		}
-	    }
-	}
-      *buf++ = 0;
-    }
+                /* Print rest of stuff */
+                while (*p && ndigit > 0)
+                {
+                    *buf++ = *p++;
+                    ndigit--;
+                }
+                /* And trailing zeros */
+                if (dot)
+                {
+                    while (ndigit > 0)
+                    {
+                        *buf++ = '0';
+                        ndigit--;
+                    }
+                }
+            }
+            *buf++ = 0;
+        }
 
-  return save;
+    return save;
 }
 
 char *
 _DEFUN (_dcvt, (ptr, buffer, invalue, precision, width, type, dot),
-	struct _reent *ptr _AND
-	char *buffer _AND
-	double invalue _AND
-	int precision _AND
-	int width _AND
-	char type _AND
-	int dot)
+        struct _reent *ptr _AND
+        char *buffer _AND
+        double invalue _AND
+        int precision _AND
+        int width _AND
+        char type _AND
+        int dot)
 {
-  switch (type)
+    switch (type)
     {
     case 'f':
     case 'F':
-      print_f (ptr, buffer, invalue, precision, type, precision == 0 ? dot : 1, 3);
-      break;
+        print_f (ptr, buffer, invalue, precision, type, precision == 0 ? dot : 1, 3);
+        break;
     case 'g':
     case 'G':
-      if (precision == 0)
-	precision = 1;
-      _gcvt (ptr, invalue, precision, buffer, type, dot);
-      break;
+        if (precision == 0)
+            precision = 1;
+        _gcvt (ptr, invalue, precision, buffer, type, dot);
+        break;
     case 'e':
     case 'E':
-      print_e (ptr, buffer, invalue, precision, type, dot);
+        print_e (ptr, buffer, invalue, precision, type, dot);
     }
-  return buffer;
+    return buffer;
 }

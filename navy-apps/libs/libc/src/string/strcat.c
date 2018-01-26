@@ -40,15 +40,15 @@ QUICKREF
 
 char *
 _DEFUN (strcat, (s1, s2),
-	char *s1 _AND
-	_CONST char *s2)
+        char *s1 _AND
+        _CONST char *s2)
 {
-  char *s = s1;
+    char *s = s1;
 
-  while (*s1)
-    s1++;
+    while (*s1)
+        s1++;
 
-  while (*s1++ = *s2++)
-    ;
-  return s;
+    while (*s1++ = *s2++)
+        ;
+    return s;
 }

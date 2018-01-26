@@ -13,9 +13,9 @@ ANSI_SYNOPSIS
 	char *ecvt(double <[val]>, int <[chars]>, int *<[decpt]>, int *<[sgn]>);
 	char *ecvtf(float <[val]>, int <[chars]>, int *<[decpt]>, int *<[sgn]>);
 
-	char *fcvt(double <[val]>, int <[decimals]>, 
+	char *fcvt(double <[val]>, int <[decimals]>,
                    int *<[decpt]>, int *<[sgn]>);
-	char *fcvtf(float <[val]>, int <[decimals]>, 
+	char *fcvtf(float <[val]>, int <[decimals]>,
                     int *<[decpt]>, int *<[sgn]>);
 
 TRAD_SYNOPSIS
@@ -135,63 +135,63 @@ Supporting OS subroutines required: <<close>>, <<fstat>>, <<isatty>>,
 
 char *
 _DEFUN (gcvt, (d, ndigit, buf),
-	double d _AND
-	int ndigit _AND
-	char *buf)
+        double d _AND
+        int ndigit _AND
+        char *buf)
 {
-  return _gcvt (_REENT, d, ndigit, buf, 'g', 0);
+    return _gcvt (_REENT, d, ndigit, buf, 'g', 0);
 }
 
 char *
 _DEFUN (fcvt, (d, ndigit, decpt, sign),
-	double d _AND
-	int ndigit _AND
-	int *decpt _AND
-	int *sign)
+        double d _AND
+        int ndigit _AND
+        int *decpt _AND
+        int *sign)
 {
-  return fcvtbuf (d, ndigit, decpt, sign, NULL);
+    return fcvtbuf (d, ndigit, decpt, sign, NULL);
 }
 
 char *
 _DEFUN (fcvtf, (d, ndigit, decpt, sign),
-	float d _AND
-	int ndigit _AND
-	int *decpt _AND
-	int *sign)
+        float d _AND
+        int ndigit _AND
+        int *decpt _AND
+        int *sign)
 {
-  return fcvt ((float) d, ndigit, decpt, sign);
+    return fcvt ((float) d, ndigit, decpt, sign);
 }
 
 
 char *
 _DEFUN (gcvtf, (d, ndigit, buf),
-	float d _AND
-	int ndigit _AND
-	char *buf)
+        float d _AND
+        int ndigit _AND
+        char *buf)
 {
-  double asd = d;
-  return gcvt (asd, ndigit, buf);
+    double asd = d;
+    return gcvt (asd, ndigit, buf);
 }
 
 
 char *
 _DEFUN (ecvt, (d, ndigit, decpt, sign),
-	double d _AND
-	int ndigit _AND
-	int *decpt _AND
-	int *sign)
+        double d _AND
+        int ndigit _AND
+        int *decpt _AND
+        int *sign)
 {
-  return ecvtbuf (d, ndigit, decpt, sign, NULL);
+    return ecvtbuf (d, ndigit, decpt, sign, NULL);
 }
 
 char *
 _DEFUN (ecvtf, (d, ndigit, decpt, sign),
-	float d _AND
-	int ndigit _AND
-	int *decpt _AND
-	int *sign)
+        float d _AND
+        int ndigit _AND
+        int *decpt _AND
+        int *sign)
 {
-  return ecvt ((double) d, ndigit, decpt, sign);
+    return ecvt ((double) d, ndigit, decpt, sign);
 }
 
 

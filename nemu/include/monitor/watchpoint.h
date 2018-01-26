@@ -4,10 +4,10 @@
 #include "common.h"
 
 typedef struct watchpoint {
-  int NO;
-  struct watchpoint *next;
+    int NO;
+    struct watchpoint *next;
 
-  /* TODO: Add more members if necessary */
+    /* TODO: Add more members if necessary */
 
 
 } WP;

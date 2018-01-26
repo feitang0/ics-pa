@@ -48,63 +48,63 @@ extern int __sflags ();
 
 FILE *
 _DEFUN (_fdopen_r, (ptr, fd, mode),
-	struct _reent *ptr _AND
-	int fd _AND
-	_CONST char *mode)
+        struct _reent *ptr _AND
+        int fd _AND
+        _CONST char *mode)
 {
-  register FILE *fp;
-  int flags, oflags;
+    register FILE *fp;
+    int flags, oflags;
 
-  if ((flags = __sflags (ptr, mode, &oflags)) == 0)
-    return 0;
+    if ((flags = __sflags (ptr, mode, &oflags)) == 0)
+        return 0;
 
-  /* make sure the mode the user wants is a subset of the actual mode */
+    /* make sure the mode the user wants is a subset of the actual mode */
 #ifdef F_GETFL
-  if ((fdflags = _fcntl (fd, F_GETFL, 0)) < 0)
-    return 0;
-  fdmode = fdflags & O_ACCMODE;
-  if (fdmode != O_RDWR && (fdmode != (oflags & O_ACCMODE)))
+    if ((fdflags = _fcntl (fd, F_GETFL, 0)) < 0)
+        return 0;
+    fdmode = fdflags & O_ACCMODE;
+    if (fdmode != O_RDWR && (fdmode != (oflags & O_ACCMODE)))
     {
-      ptr->_errno = EBADF;
-      return 0;
+        ptr->_errno = EBADF;
+        return 0;
     }
 #endif
 
-  if ((fp = __sfp (ptr)) == 0)
-    return 0;
-  fp->_flags = flags;
-  /*
-   * If opened for appending, but underlying descriptor
-   * does not have O_APPEND bit set, assert __SAPP so that
-   * __swrite() will lseek to end before each write.
-   */
+    if ((fp = __sfp (ptr)) == 0)
+        return 0;
+    fp->_flags = flags;
+    /*
+     * If opened for appending, but underlying descriptor
+     * does not have O_APPEND bit set, assert __SAPP so that
+     * __swrite() will lseek to end before each write.
+     */
 #ifdef F_GETFL
-  if ((oflags & O_APPEND) && !(fdflags & O_APPEND))
+    if ((oflags & O_APPEND) && !(fdflags & O_APPEND))
 #endif
-    fp->_flags |= __SAPP;
-  fp->_file = fd;
-  fp->_cookie = (_PTR) fp;
+        fp->_flags |= __SAPP;
+    fp->_file = fd;
+    fp->_cookie = (_PTR) fp;
 
 #undef _read
 #undef _write
 #undef _seek
 #undef _close
 
-  fp->_read = __sread;
-  fp->_write = __swrite;
-  fp->_seek = __sseek;
-  fp->_close = __sclose;
-  return fp;
+    fp->_read = __sread;
+    fp->_write = __swrite;
+    fp->_seek = __sseek;
+    fp->_close = __sclose;
+    return fp;
 }
 
 #ifndef _REENT_ONLY
 
 FILE *
 _DEFUN (fdopen, (fd, mode),
-	int fd _AND
-	_CONST char *mode)
+        int fd _AND
+        _CONST char *mode)
 {
-  return _fdopen_r (_REENT, fd, mode);
+    return _fdopen_r (_REENT, fd, mode);
 }
 
 #endif

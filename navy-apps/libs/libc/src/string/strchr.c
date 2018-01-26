@@ -37,20 +37,20 @@ QUICKREF
 
 char *
 _DEFUN (strchr, (s, i),
-	_CONST char *s _AND
-	int i)
+        _CONST char *s _AND
+        int i)
 {
-  char c = i;
+    char c = i;
 
-  while (*s && *s != c)
+    while (*s && *s != c)
     {
-      s++;
+        s++;
     }
 
-  if (*s != c)
+    if (*s != c)
     {
-      s = NULL;
+        s = NULL;
     }
 
-  return (char *) s;
+    return (char *) s;
 }

@@ -27,7 +27,7 @@ int errno;
 /*
 FUNCTION
 	<<_link_r>>---Reentrant version of link
-	
+
 INDEX
 	_link_r
 
@@ -51,23 +51,23 @@ DESCRIPTION
 
 int
 _link_r (ptr, old, new)
-     struct _reent *ptr;
-     _CONST char *old;
-     _CONST char *new;
+struct _reent *ptr;
+_CONST char *old;
+_CONST char *new;
 {
-  int ret;
+    int ret;
 
-  errno = 0;
-  ret = _link (old, new);
-  if (errno != 0)
-    ptr->_errno = errno;
-  return ret;
+    errno = 0;
+    ret = _link (old, new);
+    if (errno != 0)
+        ptr->_errno = errno;
+    return ret;
 }
 
 /*
 FUNCTION
 	<<_unlink_r>>---Reentrant version of unlink
-	
+
 INDEX
 	_unlink_r
 
@@ -89,16 +89,16 @@ DESCRIPTION
 
 int
 _unlink_r (ptr, file)
-     struct _reent *ptr;
-     _CONST char *file;
+struct _reent *ptr;
+_CONST char *file;
 {
-  int ret;
+    int ret;
 
-  errno = 0;
-  ret = _unlink (file);
-  if (errno != 0)
-    ptr->_errno = errno;
-  return ret;
+    errno = 0;
+    ret = _unlink (file);
+    if (errno != 0)
+        ptr->_errno = errno;
+    return ret;
 }
 
 #endif /* ! defined (REENTRANT_SYSCALLS_PROVIDED) */

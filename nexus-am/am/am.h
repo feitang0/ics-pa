@@ -18,8 +18,8 @@
 #define MAX_CPU 8
 
 typedef struct _Area {
-  void *start, *end;
-} _Area; 
+    void *start, *end;
+} _Area;
 
 #define _KEYS(_) \
   _(ESCAPE) _(F1) _(F2) _(F3) _(F4) _(F5) _(F6) _(F7) _(F8) _(F9) _(F10) _(F11) _(F12) \
@@ -33,8 +33,8 @@ typedef struct _Area {
 #define _KEY_NAME(k) _KEY_##k,
 
 enum {
-  _KEY_NONE = 0,
-  _KEYS(_KEY_NAME)
+    _KEY_NONE = 0,
+    _KEYS(_KEY_NAME)
 };
 
 #define _EVENTS(_) \
@@ -45,24 +45,24 @@ enum {
 #define _EVENT_NAME(ev) _EVENT_##ev,
 
 enum {
-  _EVENT_NULL = 0,
-  _EVENTS(_EVENT_NAME)
+    _EVENT_NULL = 0,
+    _EVENTS(_EVENT_NAME)
 };
 
 typedef struct _RegSet _RegSet;
 
 typedef struct _Event {
-  int event;
-  intptr_t cause;
+    int event;
+    intptr_t cause;
 } _Event;
 
 typedef struct _Screen {
-  int width, height;
+    int width, height;
 } _Screen;
 
 typedef struct _Protect {
-  _Area area; 
-  void *ptr;
+    _Area area;
+    void *ptr;
 } _Protect;
 
 #ifdef __cplusplus

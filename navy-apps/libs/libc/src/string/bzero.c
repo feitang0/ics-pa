@@ -34,9 +34,9 @@ Neither ANSI C nor the System V Interface Definition (Issue 2) require
 
 _VOID
 _DEFUN (bzero, (b, length),
-	char *b _AND
-	size_t length)
+        char *b _AND
+        size_t length)
 {
-  while (length--)
-    *b++ = 0;
+    while (length--)
+        *b++ = 0;
 }

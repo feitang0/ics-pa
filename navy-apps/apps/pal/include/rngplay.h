@@ -31,10 +31,10 @@ extern "C"
 
 VOID
 PAL_RNGPlay(
-   INT           iNumRNG,
-   INT           iStartFrame,
-   INT           iNumFrames,
-   INT           iSpeed
+    INT           iNumRNG,
+    INT           iStartFrame,
+    INT           iNumFrames,
+    INT           iSpeed
 );
 
 #ifdef __cplusplus

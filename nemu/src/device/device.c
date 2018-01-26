@@ -25,70 +25,72 @@ extern void update_screen();
 
 
 static void timer_sig_handler(int signum) {
-  jiffy ++;
-  timer_intr();
+    jiffy ++;
+    timer_intr();
 
-  device_update_flag = true;
-  if (jiffy % (TIMER_HZ / VGA_HZ) == 0) {
-    update_screen_flag = true;
-  }
+    device_update_flag = true;
+    if (jiffy % (TIMER_HZ / VGA_HZ) == 0) {
+        update_screen_flag = true;
+    }
 
-  int ret = setitimer(ITIMER_VIRTUAL, &it, NULL);
-  Assert(ret == 0, "Can not set timer");
+    int ret = setitimer(ITIMER_VIRTUAL, &it, NULL);
+    Assert(ret == 0, "Can not set timer");
 }
 
 void device_update() {
-  if (!device_update_flag) {
-    return;
-  }
-  device_update_flag = false;
-
-  if (update_screen_flag) {
-    update_screen();
-    update_screen_flag = false;
-  }
-
-  SDL_Event event;
-  while (SDL_PollEvent(&event)) {
-    switch (event.type) {
-      case SDL_QUIT: exit(0);
-
-                     // If a key was pressed
-      case SDL_KEYDOWN:
-      case SDL_KEYUP: {
-                        if (event.key.repeat == 0) {
-                          uint8_t k = event.key.keysym.scancode;
-                          bool is_keydown = (event.key.type == SDL_KEYDOWN);
-                          send_key(k, is_keydown);
-                          break;
-                        }
-                      }
-      default: break;
+    if (!device_update_flag) {
+        return;
     }
-  }
+    device_update_flag = false;
+
+    if (update_screen_flag) {
+        update_screen();
+        update_screen_flag = false;
+    }
+
+    SDL_Event event;
+    while (SDL_PollEvent(&event)) {
+        switch (event.type) {
+        case SDL_QUIT:
+            exit(0);
+
+        // If a key was pressed
+        case SDL_KEYDOWN:
+        case SDL_KEYUP: {
+            if (event.key.repeat == 0) {
+                uint8_t k = event.key.keysym.scancode;
+                bool is_keydown = (event.key.type == SDL_KEYDOWN);
+                send_key(k, is_keydown);
+                break;
+            }
+        }
+        default:
+            break;
+        }
+    }
 }
 
 void sdl_clear_event_queue() {
-  SDL_Event event;
-  while (SDL_PollEvent(&event));
+    SDL_Event event;
+    while (SDL_PollEvent(&event));
 }
 
 void init_device() {
-  init_serial();
-  init_timer();
-  init_vga();
-  init_i8042();
+    init_serial();
+    init_timer();
+    init_vga();
+    init_i8042();
 
-  struct sigaction s;
-  memset(&s, 0, sizeof(s));
-  s.sa_handler = timer_sig_handler;
-  int ret = sigaction(SIGVTALRM, &s, NULL);
-  Assert(ret == 0, "Can not set signal handler");
+    struct sigaction s;
+    memset(&s, 0, sizeof(s));
+    s.sa_handler = timer_sig_handler;
+    int ret = sigaction(SIGVTALRM, &s, NULL);
+    Assert(ret == 0, "Can not set signal handler");
 
-  it.it_value.tv_sec = 0;
-  it.it_value.tv_usec = 1000000 / TIMER_HZ;
-  ret = setitimer(ITIMER_VIRTUAL, &it, NULL);
-  Assert(ret == 0, "Can not set timer");
+    it.it_value.tv_sec = 0;
+    it.it_value.tv_usec = 1000000 / TIMER_HZ;
+    ret = setitimer(ITIMER_VIRTUAL, &it, NULL);
+    Assert(ret == 0, "Can not set timer");
 }
 #else
 

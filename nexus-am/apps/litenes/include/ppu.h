@@ -39,7 +39,7 @@ typedef struct {
     byte PPUSTATUS; // $2002 read only
     byte OAMADDR;   // $2003 write only
     byte OAMDATA;   // $2004
-	word PPUSCROLL;
+    word PPUSCROLL;
     byte PPUSCROLL_X, PPUSCROLL_Y; // $2005 write only x2
     word PPUADDR;   // $2006 write only x2
     word PPUDATA;   // $2007
@@ -63,12 +63,12 @@ word ppu_get_real_ram_address(word address);
 // Screen State and Rendering
 
 static inline byte ppu_l_h_addition(int h, int l, int x) {
-  return (((h >> (7 - x)) & 1) << 1) | ((l >> (7 - x)) & 1);
+    return (((h >> (7 - x)) & 1) << 1) | ((l >> (7 - x)) & 1);
 }
 static inline byte ppu_l_h_addition_flip(int l, int h, int x) {
-  return (((h >> x) & 1) << 1) | ((l >> x) & 1);
+    return (((h >> x) & 1) << 1) | ((l >> x) & 1);
 }
- 
+
 
 // Draws current screen pixels in ppu_background_pixels & ppu_sprite_pixels and clears them
 void ppu_render_screen();
